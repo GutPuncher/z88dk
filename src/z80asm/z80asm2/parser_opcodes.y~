@@ -1,0 +1,64 @@
+nop
+	object_->add_instr(0x00);
+
+
+ld bc, EXPR
+	if (exprs.back().in_parens() && 0==2) {
+		auto instr = object_->add_instr(0x2A);
+		instr->add_patch(RANGE_WORD, exprs.back());
+	}
+	else if (exprs.back().in_parens()) {
+		auto instr = object_->add_instr(0xed4b+16*0);
+		instr->add_patch(RANGE_WORD, exprs.back());
+	}
+	else {
+		auto instr = object_->add_instr(0x01+16*0);	
+		instr->add_patch(RANGE_WORD, exprs.back());
+	}
+
+
+ld de, EXPR
+	if (exprs.back().in_parens() && 1==2) {
+		auto instr = object_->add_instr(0x2A);
+		instr->add_patch(RANGE_WORD, exprs.back());
+	}
+	else if (exprs.back().in_parens()) {
+		auto instr = object_->add_instr(0xed4b+16*1);
+		instr->add_patch(RANGE_WORD, exprs.back());
+	}
+	else {
+		auto instr = object_->add_instr(0x01+16*1);	
+		instr->add_patch(RANGE_WORD, exprs.back());
+	}
+
+
+ld hl, EXPR
+	if (exprs.back().in_parens() && 2==2) {
+		auto instr = object_->add_instr(0x2A);
+		instr->add_patch(RANGE_WORD, exprs.back());
+	}
+	else if (exprs.back().in_parens()) {
+		auto instr = object_->add_instr(0xed4b+16*2);
+		instr->add_patch(RANGE_WORD, exprs.back());
+	}
+	else {
+		auto instr = object_->add_instr(0x01+16*2);	
+		instr->add_patch(RANGE_WORD, exprs.back());
+	}
+
+
+ld sp, EXPR
+	if (exprs.back().in_parens() && 3==2) {
+		auto instr = object_->add_instr(0x2A);
+		instr->add_patch(RANGE_WORD, exprs.back());
+	}
+	else if (exprs.back().in_parens()) {
+		auto instr = object_->add_instr(0xed4b+16*3);
+		instr->add_patch(RANGE_WORD, exprs.back());
+	}
+	else {
+		auto instr = object_->add_instr(0x01+16*3);	
+		instr->add_patch(RANGE_WORD, exprs.back());
+	}
+
+
