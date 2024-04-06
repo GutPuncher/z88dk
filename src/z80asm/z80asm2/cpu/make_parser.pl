@@ -9,7 +9,6 @@
 use Modern::Perl;
 use Path::Tiny;
 use YAML::Tiny;
-use List::Util 'max';
 
 @ARGV==2 or die "Usage: $0 input_file.yaml output_file.h\n";
 my($input_file, $output_file) = @ARGV;
@@ -17,122 +16,617 @@ my($input_file, $output_file) = @ARGV;
 my $yaml = YAML::Tiny->read($input_file);
 my %opcodes = %{$yaml->[0]};
 
-my %cpus = read_cpus('../../../common/z80asm_defs.h');		# cpu => id
+my %parser;
 
-my %tokens = read_tokens('../scan.def');					# text => id
-my $nr_tokens = max(values %tokens) +1 ;
-my $base_tokens = 0;
+my @CPUS = sort keys %{$opcodes{"nop"}};
 
-my %keywords = read_keywords('../scan.def');				# text => id
-my $nr_keywords = max(values %keywords) + 1;
-my $base_keywords = $nr_tokens;
+# build code for each asm instruction
+for my $asm (sort keys %opcodes) {
+	my @tokens = parser_tokens($asm);
+	
+	# check for parens
+	my $parens;
+	if    ($asm =~ /\(%[nmh]\)/) {		$parens = 'expr_in_parens'; }
+	elsif ($asm =~ /%[snmjc]/) {		$parens = 'expr_no_parens'; }
+	else {								$parens = 'no_expr';   }
+		
+	for my $cpu (sort keys %{$opcodes{$asm}}) {
+		my @ops = @{$opcodes{$asm}{$cpu}};
+		
+		$parser{"@tokens"}{$cpu}{$parens} = [$asm, @ops];
+	}
+}
 
-my $base_expr = $nr_tokens+$nr_keywords;
+my %parser_code;
 
-# convert opcodes into trie tree
-my $tree = { state=>0, next=>{}, current=>"top" };
+for my $tokens (sort keys %parser) {
+	$parser_code{$tokens} = merge_cpu($parser{$tokens});
+}
+
+# build parser tree
+my $tree = {state=>0, next=>{}, current=>"top"};
 my @states = ($tree);
-my @actions = ('');		# actions start at 1
 my @state_comment = ('');
+my @actions = ('');		# actions start at 1
 my %actions;
 
-for my $asm (sort keys %opcodes) {
-	my $cur_state = 0;
-	my $asm1 = $asm;
-	while ($asm1 ne "") {
-		$asm1 =~ s/^\s+//;
-		last if $asm1 eq "";
+for my $tokens (sort keys %parser_code) {
+	my @tokens = split(' ', $tokens);
+
+	# create new action
+	my $code = $parser_code{$tokens};
+	my $action_nr;
+	if (defined $actions{$code}) {
+		$action_nr = $actions{$code};
+		$actions[$action_nr]{tokens} .= " | ".$tokens;
+	}
+	else {
+		$action_nr = scalar(@actions);
+		push @actions, {code=>$code, tokens=>$tokens};
+		$actions{$code} = $action_nr;
+	}
+
+	# create tree branch
+	my $t = $tree;
+	my @current;
+	for my $i (0..$#tokens) {
+		my $token = $tokens[$i];
+		push @current, $token;
+		if (!$t->{next}{$token}) {
+			my $state = scalar(@states);
+
+			$t->{next}{$token}{next} ||= {};
+			$t->{next}{$token}{current} = "@current";
+			$t->{next}{$token}{state} = $state;
+			if ($i == $#tokens) {
+				$t->{next}{$token}{action} = $action_nr;
+				$state_comment[$state] = "@current --> action $action_nr";
+			}
+			else {
+				$state_comment[$state] = "@current";
+			}
+
+			push @states, $t->{next}{$token};
+		}		
+		$t = $t->{next}{$token};
+	}
+}
+
+# create code for each tree node
+for my $i (0 .. $#states) {
+	my $t = $states[$i];
+	my @next = sort keys %{$t->{next}};
+	my @code;
+	if (grep {/^KW_/} @next) {
+		push @code, "switch (tokens_.peek().keyword()) {";
+		for my $next (@next) {
+			if ($next =~ /^KW_/) {
+				my $next_state = $t->{next}{$next}{state};
+				push @code, "case $next: tokens_.next(); parse_state_$next_state(); return;";
+			}
+		}
+		push @code, "default:;";
+		push @code, "}";
+	}
+	if (grep {/^TK_/ && !/^TK_END$/} @next) {
+		push @code, "switch (tokens_.peek().code()) {";
+		for my $next (@next) {
+			if ($next =~ /^TK_/ && $next ne 'TK_END') {
+				my $next_state = $t->{next}{$next}{state};
+				push @code, "case $next: tokens_.next(); parse_state_$next_state(); return;";
+			}
+		}
+		push @code, "default:;";
+		push @code, "}";
+	}
+	if (grep {/^expr/} @next) {
+		my $next_state = $t->{next}{expr}{state};
+		push @code, "if (parse_expr()) { parse_state_$next_state(); return; }";
+	}
+	if (grep {/^TK_END$/} @next) {
+		my $next_state = $t->{next}{TK_END}{state};
+		push @code, "if (match_eos()) { parse_state_$next_state(); return; }";
+	}
+	if ($t->{action}) {
+		my $action = $t->{action};
+		push @code, "parse_action_$action();";
+		push @code, "return;";
+	}
+	push @code, "error(ErrSyntax);";
+	$t->{code} = join("\n", @code);
+}
+
+#------------------------------------------------------------------------------
+# output
+#------------------------------------------------------------------------------
+(my $h_file = $output_file) =~ s/\.\w+$/.h/;
+open(my $fh, ">", $h_file) or die "open $h_file: $!\n";
+for my $i (0 .. $#states) {
+	say $fh "void parse_state_$i();";
+}
+for my $i (1 .. $#actions) {
+	say $fh "void parse_action_$i();";
+}
+
+#------------------------------------------------------------------------------
+(my $cpp_file = $output_file) =~ s/\.\w+$/.cpp/;
+open($fh, ">", $cpp_file) or die "open $cpp_file: $!\n";
+for my $i (0 .. $#states) {
+	say $fh "// ", $state_comment[$i];
+	say $fh "void parse_state_$i() {\n", $states[$i]{code}, "\n}\n";
+}
+for my $i (1 .. $#actions) {
+	say $fh "// ", $actions[$i]{tokens};
+	say $fh "void parse_action_$i() {\n", $actions[$i]{code}, "}\n";
+}
+
+#------------------------------------------------------------------------------
+#use Data::Dump 'dump';
+#die dump $tree;
+
+#------------------------------------------------------------------------------
+sub parser_tokens {
+	local($_) = @_;
+	my @tokens = ();
+	
+	while (!/\G \z 				/igcx) {
+		if (/\G \s+ 			/igcx) {}
+		elsif (/\G \( %[nmh] \)	/igcx) { push @tokens, "expr"; }
+		elsif (/\G    %[snmMj]	/igcx) { push @tokens, "expr"; }
+		elsif (/\G \+ %[dsu]	/igcx) { push @tokens, "expr"; }
+		elsif (/\G    %[c]		/igcx) { push @tokens, "const_expr"; }
+		elsif (/\G    (\w+)	'	/igcx) { push @tokens, "KW_".uc($1)."1"; }
+		elsif (/\G    (\w+)		/igcx) { push @tokens, "KW_".uc($1); }
+		elsif (/\G \(    		/igcx) { push @tokens, "TK_LPAREN"; }
+		elsif (/\G , 			/igcx) { push @tokens, "TK_COMMA"; }
+		elsif (/\G \) 			/igcx) { push @tokens, "TK_RPAREN"; }
+		elsif (/\G \+   		/igcx) { push @tokens, "TK_PLUS"; }
+		elsif (/\G \-   		/igcx) { push @tokens, "TK_MINUS"; }
+		elsif (/\G \.   		/igcx) { push @tokens, "TK_DOT"; }
+		elsif (/\G \:   		/igcx) { push @tokens, "TK_COLON"; }
+		elsif (/\G \=   		/igcx) { push @tokens, "TK_EQ"; }
+		else { die "$_ ; ", substr($_, pos($_)||0) }
+	}
+	push @tokens, "TK_END";
+	return @tokens;
+}
+
+#------------------------------------------------------------------------------
+sub parse_code {
+	my($cpu, $asm, @ops) = @_;
+	my @code;
+
+	my @bin;
+	for my $op (@ops) {
+		push @bin, @$op;
+	}
+	my $bin = "@bin";
+	
+	#say "$cpu\t$asm\t$bin";
+
+	# handle special case of jump to %t
+	if ($bin =~ /%t/) {
+		# build list of instructions, sizes and target end jumps offsets
+		my %target_jumps;
+		my($JR, $JP, $JP3, $OP) = (1..4);
+		my @ops_code;
+		for my $op (@ops) {
+			my $op_size = scalar(@$op);			
+			my $count_t = scalar(grep {/%t/} @$op);
+			if ($count_t) {
+				my $opcode = 0;
+				my $target_offset = 0;
+				for my $i (0 .. $#$op) {
+					if ($op->[$i] =~ /%t(\d*)/) {
+						if ($1) {
+							$target_offset = $1;
+						}
+						last;
+					}
+					else {
+						$opcode = ($opcode << 8) | ($op->[$i] & 0xFF);
+					}
+				}
+				
+				if ($count_t == 1) {
+					push @ops_code, [$op_size, $JR, [$opcode], $target_offset];
+					$target_jumps{$target_offset} = 1+scalar(keys(%target_jumps));
+				}
+				elsif ($count_t == 2) {
+					push @ops_code, [$op_size, $JP, [$opcode], $target_offset];
+					$target_jumps{$target_offset} = 1+scalar(keys(%target_jumps));
+				}
+				elsif ($count_t == 3) {	
+					push @ops_code, [$op_size, $JP3, [$opcode], $target_offset];
+					$target_jumps{$target_offset} = 1+scalar(keys(%target_jumps));
+				}
+				else {	
+					die $count_t;
+				}				
+			}
+			else {
+				push @ops_code, [$op_size, $OP, [@$op], undef];
+			}
+		}
+		# each op holds: [size, type, [opcodes], jump_to_offset|undef]
 		
-		if ($asm1 =~ s/^(%[a-z])//i) {
-			$column = $base_expr;
+		# add offsets from end for each instruction
+		my $target_addr = 0;
+		for my $i (reverse 0 .. $#ops_code) {
+			$target_addr += $ops_code[$i][0];
+			push @{$ops_code[$i]}, $target_addr;
 		}
-		elsif (($column = consume_token(\$asm1, %keywords)) != 0) {
-			$column += $base_keywords;
-		}
-		elsif (($column = consume_token(\$asm1, %tokens)) != 0) {
-			$column += $base_tokens;
-		}
-		else {
-			die "cannot parse: $asm:$asm1\n";
-		}
-
-		my $next_state = $parse_table[$cur_state][$column];
-		if (!defined $next_state) {
-			$next_state = scalar(@parse_table);
-			push @parse_table, ([]);
-			$parse_table[$cur_state][$column] = $next_state;
+		# each op holds: [size, type, [opcodes], jump_to_offset]
+		
+		# create code
+		push @code, "{";
+		
+		# create target labels and expressions
+		for my $target (sort {$a<=>$b} keys %target_jumps) {
+			my $id = $target_jumps{$target};
+			push @code, 
+				"string target$id = Section::autolabel();",
+				"ScannedLine line$id;",
+				"TextScanner ts${id}{ target$id, line$id };",
+				"auto target_expr$id = make_shared<Expr>();",
+				"xassert(target_expr$id->parse(line$id));";
 		}
 		
-		$cur_state = $next_state;
-	}
-}
+		# create each opcode and corresponding label
+		for (@ops_code) {
+			my($op_size, $op_type, $ops, $jump_to) = @$_;
 
-use Data::Dump 'dump';
-dump \@parse_table;
-
-
-#------------------------------------------------------------------------------
-sub read_cpus {
-	my($file) = @_;
-	my %cpus;
-	for (path($file)->lines) {
-		if (/^ \s* CPU_(\w+) \s* = \s* (\d+) /x) {
-			next if $1 eq 'UNDEF';
-			$cpus{lc($1)} = $2;
+			if (exists $target_jumps{$target_addr}) {
+				my $id = $target_jumps{$target_addr};
+				push @code, "add_label(target$id);";
+			}
+			
+			if ($op_type == $JR) {
+				defined(my $id = $target_jumps{$jump_to}) or die;
+				push @code,
+					"m_exprs.push_back(target_expr$id);",
+					"add_jump_relative(0x".fmthex($ops->[0]).");",
+					"m_exprs.pop_back();";
+			}
+			elsif ($op_type == $JP) {
+				defined(my $id = $target_jumps{$jump_to}) or die;
+				push @code,
+					"m_exprs.push_back(target_expr$id);",
+					"add_opcode_nn(0x".fmthex($ops->[0]).");",
+					"m_exprs.pop_back();";
+			}
+			elsif ($op_type == $JP3) {
+				defined(my $id = $target_jumps{$jump_to}) or die;
+				push @code,
+					"m_exprs.push_back(target_expr$id);",
+					"add_opcode_nnn(0x".fmthex($ops->[0]).");",
+					"m_exprs.pop_back();";
+			}
+			elsif ($op_type == $OP) {
+				push @code, parse_code_opcode($cpu, $asm, @$ops);
+			}
+			else {
+				die $op_type;
+			}
+			
+			$target_addr -= $op_size;
 		}
-	}
-	return %cpus;
-}
-
-#------------------------------------------------------------------------------
-sub read_tokens {
-	my($file) = @_;
-	my %tokens;
-	my $id = 0;
-	for (path($file)->lines) {
-		if (/^ \s* TK\( \s* (TK_\w+) \s* , \s* \" ([^\"]*) \" /x) {
-			my($const, $string) = ($1, $2);
-			$string =~ s/\\\\/\\/g;
-			$tokens{$string} = $id unless $string eq "";
-			$id++;
+		# add end label if needed
+		if (exists $target_jumps{$target_addr}) {
+			my $id = $target_jumps{$target_addr};
+			push @code, "add_label(target$id);";
 		}
+		
+		push @code, "}";
 	}
-	return %tokens;
-}
-
-#------------------------------------------------------------------------------
-sub read_keywords {
-	my($file) = @_;
-	my %keywords;
-	my $id = 0;
-	for (path($file)->lines) {
-		if (/^ \s* KW\( \s* (KW_\w+) \s* , \s* \" ([^\"]*) \" /x) {
-			my($const, $string) = ($1, $2);
-			$keywords{$string} = $id unless $string eq "";
-			$id++;
-			if ($string ne "") {
-				$string =~ s/'/1/;
-				die $_ unless $const eq "KW_".uc($string);
+	# handle multiple uses of the same expression
+	elsif ($bin =~ /%m/) {
+		for my $op (@ops) {
+			my $count_m = scalar(grep {/%m/} @$op);
+			if ($count_m) {
+				my $opcode = 0;
+				my $target_offset = 0;
+				for my $i (0 .. $#$op) {
+					if ($op->[$i] =~ /%m(\d*)/) {
+						if ($1) {
+							$target_offset = $1;
+						}
+						last;
+					}
+					else {
+						$opcode = ($opcode << 8) | ($op->[$i] & 0xFF);
+					}
+				}
+				
+				if ($count_m==2) {
+					push @code,
+						"add_opcode_nn(0x".fmthex($opcode).", $target_offset);";
+				}
+				elsif ($count_m==3) {	
+					push @code,
+						"add_opcode_nnn(0x".fmthex($opcode).", $target_offset);";
+				}
+				elsif ($count_m==4) {	
+					push @code,
+						"add_opcode_nnnn(0x".fmthex($opcode).", $target_offset);";
+				}
+				else {	
+					die $count_m;
+				}				
+			}
+			else {
+				push @code, parse_code_opcode($cpu, $asm, @$op);
 			}
 		}
 	}
-	return %keywords;
-}
-
-#------------------------------------------------------------------------------
-sub consume_token {
-	my($textref, %tokens) = @_;
-	my $column = 0;
-	my $found = "";
-	while (my($text, $id) = each %tokens) {
-		if (substr($$textref, 0, length($text)) eq $text) {
-			if (length($text) > length($found)) {
-				$found = $text;
-				$column = $id;
+	elsif ($bin =~ /%j [0-9A-F ]+%j/) {
+		for my $op (@ops) {
+			my $count_j = scalar(grep {/%j/} @$op);
+			if ($count_j) {
+				my $opcode = 0;
+				for my $i (0 .. $#$op) {
+					last if $op->[$i] =~ /%j/;
+					$opcode = ($opcode << 8) | ($op->[$i] & 0xFF);
+				}
+				
+				if ($count_j==1) {
+					push @code,
+						"add_jump_relative(0x".fmthex($opcode).");";
+				}
+				else {	
+					die $count_j;
+				}				
 			}
+			else {
+				push @code, parse_code_opcode($cpu, $asm, @$op);
+			}
+		}
+	}
+	# handle rst[.l] %c
+	elsif ($asm =~ /^rst((\.(s|sil|l|lis))?) %c/) {
+		if ($1) {
+			push @code, "add_opcode(".sprintf("0x%02X", $ops[0][0]).");";
+			shift @ops;
+		}
+		for my $op (@ops) {
+			push @code, parse_code_opcode($cpu, $asm, @$op);
+		}
+	}
+	# handle ld dd,(ix+d) -> ld ddl,(ix+d) : ld ddh, (ix+d+1)
+	elsif ($bin =~ /%D/) {
+		for my $i (0 .. $#ops) {
+			if (($ops[$i][2]//'') eq '%d' && ($ops[$i+1][2]//'') eq '%D') {
+				my $opcode0 = ($ops[$i+0][0] << 8) + $ops[$i+0][1];
+				my $opcode1 = ($ops[$i+1][0] << 8) + $ops[$i+1][1];
+				push @code, 
+					"add_opcode_idx_idx1(".sprintf("0x%04X, 0x%04X", $opcode0, $opcode1).");";
+			}
+			elsif ($ops[$i][2]//'' eq '%D') {
+				# already handled
+			}
+			else {
+				push @code, parse_code_opcode($cpu, $asm, @{$ops[$i]});
+			}
+		}
+	}
+	elsif ($bin =~ /^\d+ %j \d+ %j$/) {
+		my $opcode0 = $ops[0][0];
+		my $opcode1 = $ops[1][0];
+		push @code, 
+			"DO_stmt_jr_jr(".sprintf("0x%02X, 0x%02X", $opcode0, $opcode1).");";
+	}		
+	else {
+		for my $op (@ops) {
+			push @code, parse_code_opcode($cpu, $asm, @$op);
 		}
 	}
 	
-	$$textref = substr($$textref, length($found));
-	return $column;
+	return join("\n", @code);
+}
+
+#------------------------------------------------------------------------------
+sub parse_code_opcode {
+	my($cpu, $asm, @bin) = @_;
+	my $bin = join(' ', @bin);
+	my @code;
+
+	#say "$cpu\t$asm\t@bin";
+	
+	if ($bin =~ s/ \@(\w+)//) {
+		push @code, "add_call_function(\"$1\");";
+	}
+	elsif ($asm =~ /^rst((\.(s|sil|l|lis))?) %c/) {
+		push @code, "add_restart();";
+	}
+	elsif ($asm =~ /^mmu %c, %n/) {
+		push @code, "add_z80n_mmu_n();";
+	}
+	elsif ($asm =~ /^mmu %c, a/) {
+		push @code, "add_z80n_mmu_a();";
+	}
+	elsif ($bin =~ s/ %d %n$//) {
+		push @code, "add_opcode_idx_n(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %n %n$//) {
+		push @code, "add_opcode_n_n(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %n$//) {
+		push @code, "add_opcode_n(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %u$//) {
+		push @code, "add_opcode_n(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %s$//) {
+		push @code, "add_opcode_s(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %h$//) {
+		push @code, "add_opcode_h(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %m %m %m %m$//) {
+		push @code, "add_opcode_nnnn(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %m %m %m$//) {
+		push @code, "add_opcode_nnn(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %m %m$//) {
+		push @code, "add_opcode_nn(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %u 0$//) {
+		push @code, "add_opcode_n_0(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %s 0$//) {
+		push @code, "add_opcode_s_0(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %M %M$//) {
+		push @code, "add_opcode_NN(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %j$//) {
+		push @code, "add_jump_relative(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/ %J %J$//) {
+		push @code, "add_jump_relative16(".build_bytes($bin).");";
+	}
+	elsif ($bin =~ s/%c\((.*?)\)/const_expr/) {
+		push @code, "{",
+					"int const_expr = -1;";
+		my @values = eval($1); die "$cpu, $asm, @bin, $1" if $@;
+		$bin =~ s/%c/const_expr/g;		# replace all other %c in bin
+		push @code, "xassert(m_const_exprs.size() >= 1);",
+					"const_expr = m_const_exprs.front();",
+                    "m_const_exprs.pop_front();",
+                    "m_exprs.pop_front();",
+					"switch (const_expr) {",
+					join(" ", map {"case $_:"} @values)." break;",
+					"default: error_int_range(const_expr); }";
+		if ($bin =~ s/ %d// || $bin =~ s/%d //) {
+			push @code, "add_opcode_idx(".build_bytes($bin).");";
+		} 
+		else {
+			push @code, "add_opcode(".build_bytes($bin).");";
+		}
+		push @code, "}";
+	}
+	elsif ($bin =~ s/ %d//) {
+		push @code, "add_opcode_idx(".build_bytes($bin).");";
+	}
+	elsif ($asm =~ /^rstv/) {
+		push @code, "add_opcode(".build_bytes($bin).");";
+	}
+	elsif ($asm =~ /^rst/) {
+		push @code, "add_restart();";
+	}
+	elsif ($bin =~ s/^%s//) {
+		push @code, "add_opcode_defb();";
+	}
+	else {
+		push @code, "add_opcode(".build_bytes($bin).");";
+	}
+	
+	return join("\n", @code);
+}
+
+#------------------------------------------------------------------------------
+# build opcode bytes - need to leave expressions for C compiler
+sub build_bytes {
+	my($bin) = @_;
+	my @bin = split(' ', $bin);
+	my @expr;
+	for (@bin) {
+		if (/[+*?<>]/) {
+			my $offset = 0;
+			if (s/^(\d+)\+//) {
+				$offset = $1;
+			}
+			$_ =~ s/\b(\d+)\b/ $1 < 10 ? $1 : "0x".fmthex($1) /ge;
+			push @expr, $_;
+			$_ = fmthex($offset);
+		}
+		else {
+			push @expr, undef;
+			$_ = eval($_); die "$bin, $_" if $@;
+			$_ = fmthex($_);
+		}
+	}
+	
+	my $opc = "0x".join('', @bin);
+	for (0..$#expr) {
+		next unless defined $expr[$_];
+		my $bytes_shift = scalar(@bin) - $_ - 1;
+		$opc .= '+(('.($expr[$_]).')';
+		$opc .= ' << '.($bytes_shift * 8) if $bytes_shift;
+		$opc .= ')';
+	}
+	
+	return $opc;
+}
+
+#------------------------------------------------------------------------------
+sub merge_cpu {
+	my($t) = @_;
+	my $ret = '';
+	my %code;
+	
+	my $last_code;
+	for my $cpu (sort keys %{$t}) {
+		my $code = merge_parens($cpu, $t->{$cpu});
+		$code{$code}{$cpu}++;
+		$last_code = $code;
+	}
+	
+	if (scalar(keys %code) == 1 && 
+	    scalar(keys %{$code{$last_code}}) == scalar(@CPUS)) {
+		# no variants
+		$ret .= $last_code."\n";
+	}
+	else {
+		# variants per CPU
+		$ret .= "switch (g_args.cpu()) {\n";
+		for my $code (sort keys %code) {
+			for my $cpu (sort keys %{$code{$code}}) {
+				$ret .= "case CPU_".uc($cpu).": ";
+			}
+			$ret .= "\n$code\nbreak;\n"
+		}
+		$ret .= "default:\n".
+				"error_illegal_ident(); }\n";
+	}
+	
+	return $ret;
+}
+
+#------------------------------------------------------------------------------
+sub merge_parens {
+	my($cpu, $t) = @_;
+	my $ret = '';
+	
+	if ($t->{no_expr}) {
+		die if $t->{expr_no_parens} || $t->{expr_in_parens};
+		return parse_code($cpu, @{$t->{no_expr}});
+	}
+	elsif (!$t->{expr_no_parens} && !$t->{expr_in_parens}) {
+		die;
+	}
+	elsif (!$t->{expr_no_parens} && $t->{expr_in_parens}) {
+		return "if (!expr_in_parens()) { error_expr_not_in_parens(); return; }\n".
+				parse_code($cpu, @{$t->{expr_in_parens}});			
+	}
+	elsif ($t->{expr_no_parens} && !$t->{expr_in_parens}) {
+		return "warn_if_expr_in_parens();\n".
+				parse_code($cpu, @{$t->{expr_no_parens}});
+	}
+	elsif ($t->{expr_no_parens} && $t->{expr_in_parens}) {
+		return 	"if (expr_in_parens()) { ".
+				parse_code($cpu, @{$t->{expr_in_parens}}).
+				" } else { ".
+				parse_code($cpu, @{$t->{expr_no_parens}}).
+				" }";
+	}
+	else {
+		die;
+	}
+}
+
+#------------------------------------------------------------------------------
+sub fmthex {
+	return join(' ', map {/^\d+$/ ? sprintf('%02X', $_) : $_} @_);
 }
