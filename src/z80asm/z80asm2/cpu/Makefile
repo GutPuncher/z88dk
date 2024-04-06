@@ -16,6 +16,6 @@ all: cpu_test/z80_ok.asm
 cpu_test/z80_ok.asm: opcodes.yaml make_cpu_test.pl Makefile
 	perl make_cpu_test.pl opcodes.yaml cpu_test && dos2unix cpu_test/*.asm 2> /dev/null
 
-all: opcodes.y
-opcodes.y: opcodes.yaml make_opcodes_y.pl Makefile
-	perl make_opcodes_y.pl opcodes.yaml $@ && dos2unix $@ 2> /dev/null
+all: parser_tables.h
+parser_tables.h: opcodes.yaml make_parser.pl Makefile
+	perl make_parser.pl opcodes.yaml $@ && dos2unix $@ 2> /dev/null

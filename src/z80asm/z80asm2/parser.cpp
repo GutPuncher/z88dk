@@ -76,13 +76,15 @@ void Parser::parse_label() {
 }
 
 void Parser::parse_instr() {
-    if (lexer_.peek(0).keyword() == KW_NOP) {
+    switch (lexer_.peek(0).keyword()) {
+    case KW_NOP:
         object_->add_instr(0x00);
-        lexer_.next(1);
+        lexer_.next();
         parse_eos();
-    }
-    else
+        break;
+    default:
         error(ErrSyntax);
+    }
 }
 
 bool Parser::match_eos() {
