@@ -22,4 +22,5 @@ extern vector<string> g_library_path;       // -L option
 // options
 extern bool g_raw_strings;                  // -raw-strings option
 extern bool g_upper_case;                   // -ucase option
+extern cpu_t g_cpu;                         // -mCPU option
 extern swap_ixiy_t g_swap_ixiy;             // -IXIY option

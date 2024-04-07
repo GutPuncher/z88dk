@@ -37,4 +37,5 @@ private:
     void parse_instr();             // opcode or directive
     bool match_eos();               // match and consume ':', '\\', END
     void parse_eos();               // match_eos() or error
+#include "cpu/parse_code.h"
 };

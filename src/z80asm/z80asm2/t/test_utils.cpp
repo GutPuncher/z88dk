@@ -97,3 +97,11 @@ void test_remove_all_blanks() {
     IS(str_remove_all_blanks("x"), "x");
     IS(str_remove_all_blanks("\t\f\r\n\vx\t\f\r\n\vy\t\f\r\n\v"), "xy");
 }
+
+void test_ipow() {
+    IS(ipow(10, -1), 0);
+    IS(ipow(10, 0), 1);
+    IS(ipow(10, 1), 10);
+    IS(ipow(10, 2), 100);
+    IS(ipow(10, 3), 1000);
+}
