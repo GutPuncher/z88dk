@@ -11,7 +11,7 @@ use Path::Tiny;
 use YAML::Tiny;
 use List::Util 'max';
 
-@ARGV==2 or die "Usage: $0 input_file.yaml output_file.h\n";
+@ARGV==2 or die "Usage: $0 input_file.yaml output_file.cpp\n";
 my($input_file, $output_file) = @ARGV;
 
 my $yaml = YAML::Tiny->read($input_file);
@@ -140,50 +140,6 @@ for my $i (0 .. $#states) {
 	}
 }
 	
-# create code for each tree node
-for my $i (0 .. $#states) {
-	my $t = $states[$i];
-	my @next = sort keys %{$t->{next}};
-	my @code;
-	if (grep {/^KW_/} @next) {
-		push @code, "switch (lexer_.peek().keyword()) {";
-		for my $next (@next) {
-			if ($next =~ /^KW_/) {
-				my $next_state = $t->{next}{$next}{state};
-				push @code, "case $next: lexer_.next(); parse_state_$next_state(); return;";
-			}
-		}
-		push @code, "default:;";
-		push @code, "}";
-	}
-	if (grep {/^TK_/ && !/^TK_END$/} @next) {
-		push @code, "switch (lexer_.peek().code()) {";
-		for my $next (@next) {
-			if ($next =~ /^TK_/ && $next ne 'TK_END') {
-				my $next_state = $t->{next}{$next}{state};
-				push @code, "case $next: lexer_.next(); parse_state_$next_state(); return;";
-			}
-		}
-		push @code, "default:;";
-		push @code, "}";
-	}
-	if (grep {/^expr/} @next) {
-		my $next_state = $t->{next}{expr}{state};
-		push @code, "if (parse_expr()) { parse_state_$next_state(); return; }";
-	}
-	if (grep {/^TK_END$/} @next) {
-		my $next_state = $t->{next}{TK_END}{state};
-		push @code, "if (match_eos()) { parse_state_$next_state(); return; }";
-	}
-	if ($t->{action}) {
-		my $action = $t->{action};
-		push @code, "parse_action_$action();";
-		push @code, "return;";
-	}
-	push @code, "error(ErrSyntax);";
-	$t->{code} = join("\n", @code);
-}
-
 #------------------------------------------------------------------------------
 # output
 #------------------------------------------------------------------------------
@@ -203,9 +159,11 @@ for my $i (1 .. $#actions) {
 	say $fh "// ", $actions[$i]{tokens};
 	say $fh $actions[$i]{code}, "break;\n";
 }
-say $fh "default: xassert(0);";
-say $fh "}";
-say $fh "}";
+print $fh <<END;
+default: xassert(0);
+}
+}
+END
 
 #------------------------------------------------------------------------------
 #use Data::Dump 'dump';

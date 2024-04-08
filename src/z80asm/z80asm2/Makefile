@@ -47,7 +47,7 @@ LDFLAGS 	+= $(shell perl ../tools/build_ldflags.pl $(CXX) $(CROSS))
 LIB_SRCS	:= ../../common/xassert.c ../../common/xmalloc.c ../../common/dirname.c
 LIB_OBJS	:= $(LIB_SRCS:.c=.o) 
 
-CXX_SRCS	:= $(wildcard *.cpp cpu/*.cpp)
+CXX_SRCS	:= $(wildcard *.cpp)
 TSRCS		:= $(wildcard t/*.cpp)
 OBJS		:= $(CXX_SRCS:.cpp=.o) $(LIB_OBJS)
 DEPENDS		:= $(CXX_SRCS:.cpp=.d) $(TSRCS:.cpp=.d) $(LIB_SRCS:.c=.d)
