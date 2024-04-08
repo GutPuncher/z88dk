@@ -11,12 +11,12 @@
 #include <string>
 using namespace std;
 
-class Object;
+class Assembler;
 
 // parse source
 class Parser {
 public:
-    Parser(Object& object);
+    Parser(Assembler& assembler);
 
     bool parse(const string& filename);
 
@@ -24,7 +24,7 @@ private:
     enum State { ST_MAIN };
 
     State state_{ ST_MAIN };        // state of parser
-    Object* object_;                // object file being built
+    Assembler* assembler_;          // assembler instance
     int start_error_count_{ 0 };    // errors found before parse
     SourceReader source_reader_;    // source file reader
     Lexer lexer_;                   // scanner

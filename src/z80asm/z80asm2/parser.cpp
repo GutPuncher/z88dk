@@ -5,13 +5,13 @@
 //-----------------------------------------------------------------------------
 
 #include "common.h"
-#include "object.h"
+#include "assembler.h"
 #include "parser.h"
 #include "xassert.h"
 using namespace std;
 
-Parser::Parser(Object& object)
-    : object_(&object) {
+Parser::Parser(Assembler& assembler)
+    : assembler_(&assembler) {
 }
 
 bool Parser::parse(const string& filename) {
@@ -53,7 +53,7 @@ void Parser::parse_main() {
         }
         if (lexer_.at_end())
             break;
-        object_->add_asmpc_instr();
+        assembler_->add_asmpc_instr();
         parse_instr();
     }
 }
@@ -63,14 +63,14 @@ void Parser::parse_label() {
     if (lexer_.peek(0).code() == TK_IDENT &&
         lexer_.peek(1).code() == TK_COLON &&
         lexer_.peek(2).keyword() != KW_EQU) {
-        object_->add_label(lexer_.peek(0).svalue());
+        assembler_->add_label(lexer_.peek(0).svalue());
         lexer_.next(2);
     }
     // .label
     else if (lexer_.peek(0).code() == TK_DOT &&
         lexer_.peek(1).code() == TK_IDENT &&
         lexer_.peek(2).keyword() != KW_EQU) {
-        object_->add_label(lexer_.peek(1).svalue());
+        assembler_->add_label(lexer_.peek(1).svalue());
         lexer_.next(2);
     }
 }
@@ -78,7 +78,7 @@ void Parser::parse_label() {
 void Parser::parse_instr() {
     switch (lexer_.peek(0).keyword()) {
     case KW_NOP:
-        object_->add_instr(0x00);
+        assembler_->add_instr(0x00);
         lexer_.next();
         parse_eos();
         break;

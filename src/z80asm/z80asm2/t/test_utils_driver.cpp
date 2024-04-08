@@ -15,6 +15,7 @@ void test_str_chomp();
 void test_str_strip();
 void test_remove_extra_blanks();
 void test_remove_all_blanks();
+void test_ipow();
 
 int main(int argc, char* argv[]) {
 	xassert_init(argv[0]);
@@ -37,6 +38,7 @@ int main(int argc, char* argv[]) {
         test_str_strip();
         test_remove_extra_blanks();
         test_remove_all_blanks();
+        test_ipow();
     }
 
     done_testing();

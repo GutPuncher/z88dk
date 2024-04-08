@@ -6,6 +6,7 @@
 
 #include "common.h"
 #include "expr.h"
+#include "symtab.h"
 #include "utils.h"
 #include "xassert.h"
 using namespace std;
@@ -273,16 +274,16 @@ ExprResult Expr::eval() const {
             break;
 
         case TK_IDENT:
-            xassert(token.symbol);
-            result = token.symbol->get_value();
-            if (result.err_code != ErrOk)
+            xassert(token.symbol());
+            result = token.symbol()->eval();
+            if (result.err_code() != ErrOk)
                 return result;
             else
-                stack.push_back(result.value);
+                stack.push_back(result.value());
             break;
 
         case TK_INTEGER:
-            stack.push_back(token.ivalue);
+            stack.push_back(token.ivalue());
             break;
 
         default:

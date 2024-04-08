@@ -54,6 +54,12 @@
     <ClCompile Include="..\..\src\z80asm\z80asm2\expr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\z80asm\z80asm2\symtab.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\z80asm\z80asm2\assembler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\z80asm\z80asm2\errors.h">
@@ -84,6 +90,12 @@
       <Filter>Header Files\cpu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\z80asm\z80asm2\expr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\z80asm\z80asm2\symtab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\z80asm\z80asm2\assembler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

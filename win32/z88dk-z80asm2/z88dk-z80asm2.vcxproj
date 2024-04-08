@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\z80asm\z80asm2\assembler.cpp" />
     <ClCompile Include="..\..\src\z80asm\z80asm2\common.cpp" />
     <ClCompile Include="..\..\src\z80asm\z80asm2\cpu\parse_code.cpp" />
     <ClCompile Include="..\..\src\z80asm\z80asm2\errors.cpp" />
@@ -145,9 +146,11 @@
     <ClCompile Include="..\..\src\z80asm\z80asm2\object.cpp" />
     <ClCompile Include="..\..\src\z80asm\z80asm2\parser.cpp" />
     <ClCompile Include="..\..\src\z80asm\z80asm2\scan.cpp" />
+    <ClCompile Include="..\..\src\z80asm\z80asm2\symtab.cpp" />
     <ClCompile Include="..\..\src\z80asm\z80asm2\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\z80asm\z80asm2\assembler.h" />
     <ClInclude Include="..\..\src\z80asm\z80asm2\common.h" />
     <ClInclude Include="..\..\src\z80asm\z80asm2\cpu\parse_code.h" />
     <ClInclude Include="..\..\src\z80asm\z80asm2\errors.h" />
@@ -157,6 +160,7 @@
     <ClInclude Include="..\..\src\z80asm\z80asm2\object.h" />
     <ClInclude Include="..\..\src\z80asm\z80asm2\parser.h" />
     <ClInclude Include="..\..\src\z80asm\z80asm2\scan.h" />
+    <ClInclude Include="..\..\src\z80asm\z80asm2\symtab.h" />
     <ClInclude Include="..\..\src\z80asm\z80asm2\utils.h" />
   </ItemGroup>
   <ItemGroup>

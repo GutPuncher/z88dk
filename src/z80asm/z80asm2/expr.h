@@ -9,6 +9,7 @@
 #include "location.h"
 #include "errors.h"
 #include "scan.h"
+#include "z80asm_defs.h"
 using namespace std;
 
 //-----------------------------------------------------------------------------
@@ -64,4 +65,15 @@ private:
     void parse_power();
     void parse_unary();
     void parse_primary();
+};
+
+//-----------------------------------------------------------------------------
+
+class Patch {
+public:
+    Patch(range_t range, Expr* expr);
+
+private:
+    range_t range_{ RANGE_UNDEFINED };  // type of patch
+    Expr*   expr_;                      // holds the expresion from source
 };

@@ -8,6 +8,7 @@
 #include "errors.h"
 #include "scan.h"
 #include "utils.h"
+#include "xassert.h"
 #include <iomanip>
 #include <iostream>
 #include <sstream>
@@ -411,4 +412,9 @@ bool Lexer::at_end() const {
 
 void Lexer::flush() {
     pos_ = (int)tokens_.size();
+}
+
+Symbol* Token::symbol() const {
+    xassert(symbol_);
+    return symbol_;
 }
