@@ -6,3 +6,6 @@
 
 #include "object.h"
 
+int Instr::addr() const {
+    return addr_;
+}

@@ -31,6 +31,7 @@ public:
 
     void clear();
     void set_bytes(int opcode);             // decompose 0xfd213412 in 4 bytes
+    int addr() const;
 
 private:
     int addr_{ 0 };                         // address computed during linking

@@ -10,6 +10,8 @@
 #include "xassert.h"
 using namespace std;
 
+#include "cpu/parse_code.h"
+
 Parser::Parser(Assembler& assembler)
     : assembler_(&assembler) {
 }
@@ -54,7 +56,8 @@ void Parser::parse_main() {
         if (lexer_.at_end())
             break;
         assembler_->add_asmpc_instr();
-        parse_instr();
+        if (!parse_directive() && !parse_opcode())
+            error(ErrSyntax);
     }
 }
 
@@ -75,16 +78,66 @@ void Parser::parse_label() {
     }
 }
 
-void Parser::parse_instr() {
-    switch (lexer_.peek(0).keyword()) {
-    case KW_NOP:
-        assembler_->add_instr(0x00);
-        lexer_.next();
-        parse_eos();
-        break;
-    default:
-        error(ErrSyntax);
+bool Parser::parse_directive() {
+    return false;
+}
+
+bool Parser::parse_opcode() {
+    int state = 0;
+    bool accept = false;
+    while (true) {
+        const Token& token = lexer_.peek();
+
+        int accept = accept_stt[state];
+        if (accept != 0) {
+            parse_action(accept);
+            return true;
+        }
+
+        int end_state = token_stt[state][TK_END];
+        if (end_state != 0) {
+            if (!match_eos())
+                return false;           // syntax error
+            state = end_state;
+            continue;
+        }
+
+        int keyword = token.keyword();
+        int next_state = keyword_stt[state][keyword];
+        if (keyword != KW_NONE && next_state != 0) {
+            lexer_.next();
+            state = next_state;
+            continue;
+        }
+
+        int code = token.code();
+        next_state = token_stt[state][code];
+        if (next_state != 0) {
+            lexer_.next();
+            state = next_state;
+            continue;
+        }
+
+        next_state = expr_stt[state];
+        if (next_state != 0) {
+            if (!parse_expr())
+                return false;           // syntax error
+            state = next_state;
+            continue;
+        }
+
+        next_state = const_expr_stt[state];
+        if (next_state != 0) {
+            if (!parse_expr())
+                return false;           // syntax error
+            state = next_state;
+            continue;
+        }
+
+        if (code == TK_END)
+            break;
     }
+    return false;                       // syntax error
 }
 
 bool Parser::match_eos() {
@@ -100,7 +153,3 @@ bool Parser::match_eos() {
     }
 }
 
-void Parser::parse_eos() {
-    if (!match_eos())
-        error(ErrEosExpected);
-}

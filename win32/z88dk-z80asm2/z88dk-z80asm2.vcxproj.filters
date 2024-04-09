@@ -16,9 +16,6 @@
     <Filter Include="Header Files\cpu">
       <UniqueIdentifier>{edc83268-7938-4a78-9e96-8df08116a57d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\cpu">
-      <UniqueIdentifier>{c4523598-c497-45f4-8aca-a3978031c2b3}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\z80asm\z80asm2\main.cpp">
@@ -47,9 +44,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\z80asm\z80asm2\object.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\z80asm\z80asm2\cpu\parse_code.cpp">
-      <Filter>Source Files\cpu</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\z80asm\z80asm2\expr.cpp">
       <Filter>Source Files</Filter>

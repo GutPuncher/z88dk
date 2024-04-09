@@ -34,8 +34,8 @@ private:
     void parse_line();              // switch to each state-parser
     void parse_main();              // main state
     void parse_label();             // label, if any
-    void parse_instr();             // opcode or directive
+    bool parse_directive();         // directive
+    bool parse_opcode();            // opcode
     bool match_eos();               // match and consume ':', '\\', END
-    void parse_eos();               // match_eos() or error
-#include "cpu/parse_code.h"
+    void parse_action(int action);  // execute opcode parser action
 };

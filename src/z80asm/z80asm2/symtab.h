@@ -20,7 +20,9 @@ class Instr;
 
 class Symbol : public HasLocation {
 public:
-    Symbol(const string& name, sym_scope_t scope, sym_type_t type, Section* section);
+    Symbol(const string& name, sym_scope_t scope, sym_type_t type, Section* section, int value = 0);
+
+    const string& name() const;
 
     ExprResult eval();				    // compute value
 

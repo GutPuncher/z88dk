@@ -137,7 +137,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\z80asm\z80asm2\assembler.cpp" />
     <ClCompile Include="..\..\src\z80asm\z80asm2\common.cpp" />
-    <ClCompile Include="..\..\src\z80asm\z80asm2\cpu\parse_code.cpp" />
     <ClCompile Include="..\..\src\z80asm\z80asm2\errors.cpp" />
     <ClCompile Include="..\..\src\z80asm\z80asm2\expr.cpp" />
     <ClCompile Include="..\..\src\z80asm\z80asm2\files.cpp" />
