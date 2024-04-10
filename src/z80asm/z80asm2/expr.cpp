@@ -13,6 +13,32 @@ using namespace std;
 
 //-----------------------------------------------------------------------------
 
+class ExprException : public exception {
+public:
+    ExprException(ErrCode err_code, const string& err_arg = "");
+
+    ErrCode err_code() const;
+    const string& err_arg() const;
+
+private:
+    ErrCode err_code_{ ErrOk };			// error message during expression parsing
+    string	err_arg_;					// argument for error message
+};
+
+ExprException::ExprException(ErrCode err_code, const string& err_arg)
+    : err_code_(err_code), err_arg_(err_arg) {
+}
+
+ErrCode ExprException::err_code() const {
+    return err_code_;
+}
+
+const string& ExprException::err_arg() const {
+    return err_arg_;
+}
+
+//-----------------------------------------------------------------------------
+
 ExprResult::ExprResult(int value, ErrCode err_code, const string& err_arg)
     : value_(value), err_code_(err_code), err_arg_(err_arg) {
 }
@@ -296,6 +322,19 @@ ExprResult Expr::eval() const {
     return ExprResult(x, ErrOk);
 }
 
+const Token& Expr::token() {
+    return lexer_->peek();
+}
+
+TkCode Expr::token_code() {
+    return lexer_->peek().code();
+}
+
+void Expr::consume_token() {
+    text_ = Token::concat(text_, lexer_->peek().to_string());
+    lexer_->next();
+}
+
 bool Expr::parse_expr1(Lexer* lexer) {
     lexer_ = lexer;
     bool result = parse_expr();
@@ -304,5 +343,313 @@ bool Expr::parse_expr1(Lexer* lexer) {
 }
 
 bool Expr::parse_expr() {
-    return false;
+    text_.clear();
+    rpn_tokens_.clear();
+    set_location(g_errors.location());
+
+    bool ok = true;
+    try {
+        parse_ternary_condition();
+    }
+    catch (ExprException& e) {
+        if (!parsing_if_)
+            g_errors.error(e.err_code(), e.err_arg());
+        ok = false;
+    }
+    return ok;
 }
+
+void Expr::parse_ternary_condition() {
+    parse_logical_or();
+    if (token_code() == TK_QUEST) {
+        consume_token();
+        parse_ternary_condition();
+        if (token_code() == TK_COLON) {
+            consume_token();
+            parse_ternary_condition();
+            rpn_tokens_.push_back(Token(TK_QUEST));
+        }
+        else {
+            throw ExprException(ErrColonExpected, lexer_->peek_text());
+        }
+    }
+}
+
+void Expr::parse_logical_or() {
+    parse_logical_and();
+    while (true) {
+        switch (token_code()) {
+        case TK_LOGOR:
+            consume_token();
+            parse_logical_and();
+            rpn_tokens_.push_back(Token(TK_LOGOR));
+            break;
+        case TK_LOGXOR:
+            consume_token();
+            parse_logical_and();
+            rpn_tokens_.push_back(Token(TK_LOGXOR));
+            break;
+        default:
+            return;
+        }
+    }
+}
+
+void Expr::parse_logical_and() {
+    parse_binary_or();
+    while (true) {
+        switch (token_code()) {
+        case TK_LOGAND:
+            consume_token();
+            parse_binary_or();
+            rpn_tokens_.push_back(Token(TK_LOGAND));
+            break;
+        default:
+            return;
+        }
+    }
+}
+
+void Expr::parse_binary_or() {
+    parse_binary_and();
+    while (true) {
+        switch (token_code()) {
+        case TK_BINOR:
+            consume_token();
+            parse_binary_and();
+            rpn_tokens_.push_back(Token(TK_BINOR));
+            break;
+        case TK_BINXOR:
+            consume_token();
+            parse_binary_and();
+            rpn_tokens_.push_back(Token(TK_BINXOR));
+            break;
+        default:
+            return;
+        }
+    }
+}
+
+void Expr::parse_binary_and() {
+    parse_condition();
+    while (true) {
+        switch (token_code()) {
+        case TK_BINAND:
+            consume_token();
+            parse_condition();
+            rpn_tokens_.push_back(Token(TK_BINAND));
+            break;
+        default:
+            return;
+        }
+    }
+}
+
+void Expr::parse_condition() {
+    parse_shift();
+    while (true) {
+        switch (token_code()) {
+        case TK_LT:
+            consume_token();
+            parse_shift();
+            rpn_tokens_.push_back(Token(TK_LT));
+            break;
+        case TK_LE:
+            consume_token();
+            parse_shift();
+            rpn_tokens_.push_back(Token(TK_LE));
+            break;
+        case TK_GT:
+            consume_token();
+            parse_shift();
+            rpn_tokens_.push_back(Token(TK_GT));
+            break;
+        case TK_GE:
+            consume_token();
+            parse_shift();
+            rpn_tokens_.push_back(Token(TK_GE));
+            break;
+        case TK_EQ:
+            consume_token();
+            parse_shift();
+            rpn_tokens_.push_back(Token(TK_EQ));
+            break;
+        case TK_NE:
+            consume_token();
+            parse_shift();
+            rpn_tokens_.push_back(Token(TK_NE));
+            break;
+        default:
+            return;
+        }
+    }
+}
+
+void Expr::parse_shift() {
+    parse_addition();
+    while (true) {
+        switch (token_code()) {
+        case TK_LSHIFT:
+            consume_token();
+            parse_addition();
+            rpn_tokens_.push_back(Token(TK_LSHIFT));
+            break;
+        case TK_RSHIFT:
+            consume_token();
+            parse_addition();
+            rpn_tokens_.push_back(Token(TK_RSHIFT));
+            break;
+        default:
+            return;
+        }
+    }
+}
+
+void Expr::parse_addition() {
+    parse_multiplication();
+    while (true) {
+        switch (token_code()) {
+        case TK_PLUS:
+            consume_token();
+            parse_multiplication();
+            rpn_tokens_.push_back(Token(TK_PLUS));
+            break;
+        case TK_MINUS:
+            consume_token();
+            parse_multiplication();
+            rpn_tokens_.push_back(Token(TK_MINUS));
+            break;
+        default:
+            return;
+        }
+    }
+}
+
+void Expr::parse_multiplication() {
+    parse_power();
+    while (true) {
+        switch (token_code()) {
+        case TK_MULT:
+            consume_token();
+            parse_power();
+            rpn_tokens_.push_back(Token(TK_MULT));
+            break;
+        case TK_DIV:
+            consume_token();
+            parse_power();
+            rpn_tokens_.push_back(Token(TK_DIV));
+            break;
+        case TK_MOD:
+            consume_token();
+            parse_power();
+            rpn_tokens_.push_back(Token(TK_MOD));
+            break;
+        default:
+            return;
+        }
+    }
+}
+
+void Expr::parse_power() {
+    parse_unary();
+    if (token_code() == TK_POWER) {
+        consume_token();
+        parse_power();
+        rpn_tokens_.push_back(Token(TK_POWER));
+    }
+}
+
+void Expr::parse_unary() {
+    switch (token_code()) {
+    case TK_MINUS:
+        consume_token();
+        parse_unary();
+        rpn_tokens_.push_back(Token(TK_UNARY_MINUS));
+        break;
+    case TK_PLUS:
+        consume_token();
+        parse_unary();
+        rpn_tokens_.push_back(Token(TK_UNARY_PLUS));
+        break;
+    case TK_LOGNOT:
+        consume_token();
+        parse_unary();
+        rpn_tokens_.push_back(Token(TK_LOGNOT));
+        break;
+    case TK_BINNOT:
+        consume_token();
+        parse_unary();
+        rpn_tokens_.push_back(Token(TK_BINNOT));
+        break;
+    case TK_LPAREN:
+        consume_token();
+        parse_ternary_condition();
+        if (token_code() != TK_RPAREN)
+            throw ExprException(ErrUnbalancedParens, lexer_->peek_text());
+        consume_token();
+        rpn_tokens_.push_back(Token(TK_LPAREN));
+        break;
+    case TK_LSQUARE:
+        consume_token();
+        parse_ternary_condition();
+        if (token_code() != TK_RSQUARE)
+            throw ExprException(ErrUnbalancedParens, lexer_->peek_text());
+        consume_token();
+        rpn_tokens_.push_back(Token(TK_LPAREN));
+        break;
+    default:
+        parse_primary();
+    }
+}
+
+void Expr::parse_primary() {
+    string name;
+    Token symbol_token, const_token;
+
+    switch (token_code()) {
+    case TK_IDENT:
+        name = token().svalue();
+
+        // do not create symbols refered to in IF or while checking if code is expr
+        if (parsing_if_) {
+            Symbol* symbol = g_asm.find_symbol(name);
+            if (symbol) {
+                symbol_token = token();
+                symbol_token.set_symbol(symbol);
+                rpn_tokens_.push_back(symbol_token);
+            }
+            else {
+                const_token = token();
+                const_token.set_code(TK_INTEGER);
+                const_token.set_ivalue(0);
+                rpn_tokens_.push_back(const_token);
+            }
+        }
+        else {
+            Symbol* symbol = g_asm.use_symbol(name);
+            symbol_token = token();
+            symbol_token.set_symbol(symbol);
+            rpn_tokens_.push_back(symbol_token);
+        }
+        consume_token();
+        break;
+
+    case TK_ASMPC:
+        xassert(g_asm.asmpc);
+        symbol_token = token();
+        symbol_token.set_svalue(g_asm.asmpc->name);
+        symbol_token.set_symbol(g_asm.asmpc);
+        rpn_tokens_.push_back(symbol_token);
+        consume_token();
+        break;
+
+    case TK_INTEGER:
+        rpn_tokens_.push_back(token());
+        consume_token();
+        break;
+
+    default:
+        throw ExprException(ErrIntOrIdentExpected, lexer_->peek_text());
+    }
+}
+

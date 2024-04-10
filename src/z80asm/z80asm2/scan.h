@@ -40,6 +40,12 @@ public:
     bool blank_before() const;
     Symbol* symbol() const;
 
+    void set_code(TkCode code);
+    void set_ivalue(int ivalue);
+    void set_fvalue(double fvalue);
+    void set_svalue(const string& svalue);
+    void set_symbol(Symbol* symbol);
+
     string to_string() const;
     static string to_string(const vector<Token>& tokens);
     static string concat(const string& s1, const string& s2);
