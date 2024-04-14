@@ -56,6 +56,14 @@ void test_char_digit() {
     }
 }
 
+void test_str_begins_with() {
+    OK(str_begins_with("", ""));
+    OK(str_begins_with("abc", "a"));
+    OK(str_begins_with("abc", "ab"));
+    OK(str_begins_with("abc", "abc"));
+    NOK(str_begins_with("abc", "a "));
+}
+
 void test_str_ends_with() {
     OK(str_ends_with("", ""));
     OK(str_ends_with("abc", "c"));

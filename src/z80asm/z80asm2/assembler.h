@@ -11,7 +11,13 @@ using namespace std;
 
 class Assembler {
 public:
+
+
+    static string autolabel();
+
     void add_asmpc_instr() {}
     void add_instr(unsigned /*opcode*/) {}
     void add_label(const string& /*name*/) {}
+
+
 };

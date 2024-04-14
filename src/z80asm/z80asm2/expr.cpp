@@ -19,6 +19,7 @@ public:
 
     ErrCode err_code() const;
     const string& err_arg() const;
+    void error();
 
 private:
     ErrCode err_code_{ ErrOk };			// error message during expression parsing
@@ -35,6 +36,10 @@ ErrCode ExprException::err_code() const {
 
 const string& ExprException::err_arg() const {
     return err_arg_;
+}
+
+void ExprException::error() {
+    g_errors.error(err_code_, err_arg_);
 }
 
 //-----------------------------------------------------------------------------
@@ -353,7 +358,7 @@ bool Expr::parse_expr() {
     }
     catch (ExprException& e) {
         if (!parsing_if_)
-            g_errors.error(e.err_code(), e.err_arg());
+            e.error();
         ok = false;
     }
     return ok;
@@ -651,5 +656,15 @@ void Expr::parse_primary() {
     default:
         throw ExprException(ErrIntOrIdentExpected, lexer_->peek_text());
     }
+}
+
+//-----------------------------------------------------------------------------
+
+Patch::Patch(range_t range, Expr* expr)
+    : range_(range), expr_(expr) {
+}
+
+Patch::~Patch() {
+    delete expr_;
 }
 

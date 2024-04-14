@@ -8,6 +8,7 @@
 #include "expr.h"
 #include "object.h"
 #include "symtab.h"
+#include "utils.h"
 using namespace std;
 
 Symbol::Symbol(const string& name, sym_scope_t scope, sym_type_t type, Section* section, int value)
@@ -58,7 +59,7 @@ void Symtab::clear() {
 bool Symtab::insert(Symbol* symbol) {
     auto it = symbols_.find(symbol->name());
     if (it != symbols_.end()) {
-        if (symbol->name().substr(0, 11) == "__CDBINFO__")
+        if (str_begins_with(symbol->name(), "__CDBINFO__"))
             return true;	// ignore duplicates of these
         else {
             g_errors.error(ErrDuplicateDefinition, symbol->name());

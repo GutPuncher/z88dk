@@ -72,6 +72,9 @@ private:
 class Patch {
 public:
     Patch(range_t range, Expr* expr);
+    virtual ~Patch();
+    Patch(const Patch& other) = delete;
+    Patch& operator=(const Patch& other) = delete;
 
 private:
     range_t range_{ RANGE_UNDEFINED };  // type of patch

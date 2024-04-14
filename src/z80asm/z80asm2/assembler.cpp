@@ -5,4 +5,14 @@
 //-----------------------------------------------------------------------------
 
 #include "assembler.h"
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+using namespace std;
 
+string Assembler::autolabel() {
+    static int n = 0;
+    ostringstream oss;
+    oss << "z80asm$" << setw(4) << setfill('0') << n++;
+    return oss.str();
+}

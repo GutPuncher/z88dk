@@ -39,6 +39,13 @@ int char_digit(char c) {
 
 //-----------------------------------------------------------------------------
 
+bool str_begins_with(const string& str, const string& beginning) {
+    if (str.length() >= beginning.length())
+        return (0 == str.compare(0, beginning.length(), beginning));
+    else
+    return false;
+}
+
 bool str_ends_with(const string& str, const string& ending) {
     if (str.length() >= ending.length())
         return (0 == str.compare(str.length() - ending.length(), ending.length(), ending));

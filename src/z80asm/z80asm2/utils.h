@@ -15,6 +15,7 @@ bool is_ident(char c);
 bool is_ident(const string& ident);
 int char_digit(char c);
 
+bool str_begins_with(const string& str, const string& beginning);
 bool str_ends_with(const string& str, const string& ending);
 string str_tolower(string str);
 string str_toupper(string str);
