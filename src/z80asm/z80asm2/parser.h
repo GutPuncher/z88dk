@@ -8,6 +8,7 @@
 
 #include "files.h"
 #include "scan.h"
+#include <deque>
 #include <vector>
 #include <string>
 using namespace std;
@@ -33,7 +34,8 @@ private:
     int start_error_count_{ 0 };    // errors found before parse
     SourceReader source_reader_;    // source file reader
     Lexer lexer_;                   // scanner
-    vector<Expr*> exprs_;           // list of expressions parsed
+    deque<Expr*> exprs_;           // list of expressions parsed
+    deque<int> const_exprs_;       // list of const expressions parsed
 
     void error(ErrCode err_code);   // syntax error and flush lexer
     bool parse();                   // parse full input
@@ -45,12 +47,29 @@ private:
     bool match_eos();               // match and consume ':', '\\', END
     void parse_action(int action);  // execute opcode parser action
     bool parse_expr();              // parse expression in input
+    bool parse_const_expr();        // parse expression in input
+
+    bool expr_in_parens();          // check if first expression is ()
     void warn_if_expr_in_parens();  // warning if expression in () and considered immediate
-    void add_opcode(int opcode);    // add opcode without arguments
-    Instr* add_opcode(int opcode, range_t range); // add opcode with one patch of the given range
-    Instr* add_opcode_n(int opcode);    // RANGE_BYTE_UNSIGNED
-    Instr* add_opcode_nn(int opcode);   // RANGE_WORD
-    Instr* add_opcode_idx(int opcode);  // RANGE_BYTE_SIGNED at third address
+    void error_if_expr_not_in_parens(); // error if () expected
     void error_illegal_ident();     // issue error
-    void add_call_function(const string& name);     // call to a library function
+    void error_int_range(int value);// issue error
+    Instr* add_opcode(int opcode);  // add opcode without arguments
+
+    // add opcode with one patch of the given range, adn with fixed delta added to expression
+    Instr* add_opcode(int opcode, range_t range, int delta = 0); 
+    Instr* add_opcode_n(int opcode, int delta = 0);     // RANGE_BYTE_UNSIGNED
+    Instr* add_opcode_s(int opcode, int delta = 0);     // RANGE_BYTE_SIGNED
+    Instr* add_opcode_nn(int opcode, int delta = 0);    // RANGE_WORD + fixed delta
+    Instr* add_opcode_nnn(int opcode, int delta = 0);   // RANGE_PTR24 + fixed delta
+    Instr* add_opcode_idx(int opcode, int delta = 0);   // RANGE_BYTE_SIGNED at third address
+    Instr* add_opcode_idx_n(int opcode);                // RANGE_BYTE_SIGNED, RANGE_BYTE_UNSIGNED
+    Instr* add_opcode_jr(int opcode);                   // RANGE_JR_OFFSET
+    Instr* add_opcode_jre(int opcode);                  // RANGE_JRE_OFFSET
+
+    Instr* add_call_function(const string& name);       // call to a library function
+    Instr* add_call_function_n(const string& name);     // same with a byte argument
+
+    Symbol* add_label(const string& name);
+    string autolabel();
 };

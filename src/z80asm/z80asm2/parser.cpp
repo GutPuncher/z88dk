@@ -7,6 +7,7 @@
 #include "common.h"
 #include "assembler.h"
 #include "parser.h"
+#include "utils.h"
 #include "xassert.h"
 using namespace std;
 
@@ -19,7 +20,6 @@ Parser::Parser(Assembler& assembler)
 Parser::~Parser() {
     for (auto& expr : exprs_)
         delete expr;
-    exprs_.clear();
 }
 
 bool Parser::parse(const string& filename) {
@@ -134,7 +134,7 @@ bool Parser::parse_opcode() {
 
         next_state = const_expr_stt[state];
         if (next_state != 0) {
-            if (!parse_expr())
+            if (!parse_const_expr())
                 return false;           // syntax error
             state = next_state;
             continue;
@@ -169,39 +169,96 @@ bool Parser::parse_expr() {
         return false;
 }
 
-void Parser::warn_if_expr_in_parens() {
-    if (!exprs_.empty()) {
-        if (exprs_.back()->in_parens())
-            g_errors.warning(ErrExprInParens);
+bool Parser::parse_const_expr() {
+    if (!parse_expr())
+        return false;
+    Expr* expr = exprs_.back();
+    exprs_.pop_back();
+    ExprResult res = expr->eval();
+    if (!res.ok()) {
+        delete expr;
+        return false;
     }
+    else {
+        int value = res.value();
+        const_exprs_.push_back(value);
+        delete expr;
+        return true;
+    }
+}
+
+bool Parser::expr_in_parens() {
+    if (exprs_.empty())
+        return false;
+    else
+        return exprs_.front()->in_parens();
+}
+
+void Parser::warn_if_expr_in_parens() {
+    if (expr_in_parens())
+        g_errors.warning(ErrExprInParens);
+}
+
+void Parser::error_if_expr_not_in_parens() {
+    if (!expr_in_parens())
+        g_errors.error(ErrExprNotInParens);
+}
+
+void Parser::error_illegal_ident() {
+    g_errors.error(ErrIllegalIdent);
+}
+
+void Parser::error_int_range(int value) {
+    g_errors.error(ErrIntRange, int_to_hex(value, 2));
 }
 
 Instr* Parser::add_opcode(int opcode) {
     return assembler_->add_instr(opcode);
 }
 
-Instr* Parser::add_opcode(int opcode, range_t range) {
+Instr* Parser::add_opcode(int opcode, range_t range, int delta) {
     xassert(!exprs_.empty());
+
     Instr* instr = assembler_->add_instr(opcode);
-    Patch* patch = new Patch(range, exprs_.back());
+
+    Expr* expr = exprs_.front();
+    exprs_.pop_front();
+
+    // add delta if asked
+    if (delta != 0) {
+        Expr* expr1 = new Expr(*assembler_, "+(" + expr->text() + ")+" + to_string(delta));
+        delete expr;
+        expr = expr1;
+    }
+
+    // create and add patch
+    Patch* patch = new Patch(range, expr);
     instr->add_patch(patch);
     return instr;
 }
 
-Instr* Parser::add_opcode_n(int opcode) {
-    return add_opcode(opcode, RANGE_BYTE_UNSIGNED);
+Instr* Parser::add_opcode_n(int opcode, int delta) {
+    return add_opcode(opcode, RANGE_BYTE_UNSIGNED, delta);
 }
 
-Instr* Parser::add_opcode_nn(int opcode) {
-    return add_opcode(opcode, RANGE_WORD);
+Instr* Parser::add_opcode_s(int opcode, int delta) {
+    return add_opcode(opcode, RANGE_BYTE_SIGNED, delta);
 }
 
-Instr* Parser::add_opcode_idx(int opcode) {
+Instr* Parser::add_opcode_nn(int opcode, int delta) {
+    return add_opcode(opcode, RANGE_WORD, delta);
+}
+
+Instr* Parser::add_opcode_nnn(int opcode, int delta) {
+    return add_opcode(opcode, RANGE_PTR24, delta);
+}
+
+Instr* Parser::add_opcode_idx(int opcode, int delta) {
     if ((opcode & 0xffff0000) == 0) {
-        return add_opcode(opcode, RANGE_BYTE_SIGNED);
+        return add_opcode(opcode, RANGE_BYTE_SIGNED, delta);
     }
     else if ((opcode & 0xff000000) == 0) {
-        Instr* instr = add_opcode(opcode >> 8, RANGE_BYTE_SIGNED);
+        Instr* instr = add_opcode(opcode >> 8, RANGE_BYTE_SIGNED, delta);
         instr->add_byte(opcode & 0xff);
         return instr;
     }
@@ -210,12 +267,51 @@ Instr* Parser::add_opcode_idx(int opcode) {
     }
 }
 
-void Parser::error_illegal_ident() {
-    g_errors.error(ErrIllegalIdent);
+Instr* Parser::add_opcode_idx_n(int opcode) {
+    Instr* instr = add_opcode_idx(opcode);
+
+    xassert(!exprs_.empty());
+    Expr* expr = exprs_.front();
+    exprs_.pop_front();
+
+    // create and add patch
+    Patch* patch = new Patch(RANGE_BYTE_UNSIGNED, expr);
+    instr->add_patch(patch);
+    return instr;
 }
 
-void Parser::add_call_function(const string& name) {
+Instr* Parser::add_opcode_jr(int opcode) {
+    return add_opcode(opcode, RANGE_JR_OFFSET);
+}
+
+Instr* Parser::add_opcode_jre(int opcode) {
+    return add_opcode(opcode, RANGE_JRE_OFFSET);
+}
+
+Instr* Parser::add_call_function(const string& name) {
+    assembler_->declare_extern(name);
     Expr* expr = new Expr(assembler_, name);
-    exprs_.push_back(expr);
-    add_opcode_nn(0xCD);
+    exprs_.push_front(expr);
+    Instr* instr = add_opcode_nn(Z80_CALL);
+}
+
+Instr* Parser::add_call_function_n(const string& name) {
+    xassert(!exprs_.empty());
+
+    Instr* instr = add_call_function(name);
+
+    Expr* expr = exprs_.front();
+    exprs_.pop_front();
+
+    Patch* patch = new Patch(RANGE_BYTE_UNSIGNED, expr);
+    instr->add_patch(patch);
+    return instr;
+}
+
+Symbol* Parser::add_label(const string& name) {
+    return assembler_->add_label(name);
+}
+
+string Parser::autolabel() {
+    return assembler_->autolabel();
 }

@@ -170350,8 +170350,7 @@ case 203:
 switch (g_cpu) {
 case CPU_8080: case CPU_8085: case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
-add_call_function("__z80asm__add_sp_s");
-add_opcode_defb();
+add_call_function_n("__z80asm__add_sp_s");
 break;
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
@@ -171644,11 +171643,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -171666,11 +171663,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -171688,11 +171683,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -171710,11 +171703,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -171732,11 +171723,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -171754,11 +171743,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -171776,11 +171763,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -171798,11 +171783,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -171820,11 +171803,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -171842,11 +171823,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -171864,11 +171843,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -171886,11 +171863,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -172560,7 +172535,7 @@ case 366:
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
-add_jump_relative(0x7610);
+add_opcode_jr(0x7610);
 break;
 default:
 error_illegal_ident(); }
@@ -172573,7 +172548,7 @@ case 367:
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
-add_jump_relative(0x76ED10);
+add_opcode_jr(0x76ED10);
 break;
 default:
 error_illegal_ident(); }
@@ -173206,11 +173181,9 @@ warn_if_expr_in_parens();
 add_opcode(0x76);
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -173229,11 +173202,9 @@ warn_if_expr_in_parens();
 add_opcode(0x76);
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -173252,11 +173223,9 @@ warn_if_expr_in_parens();
 add_opcode(0x76);
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -173275,11 +173244,9 @@ warn_if_expr_in_parens();
 add_opcode(0x76);
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -173298,11 +173265,9 @@ warn_if_expr_in_parens();
 add_opcode(0x76);
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -173801,7 +173766,7 @@ case 454:
 // KW_ALTD KW_IOE KW_LD KW_A TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xDB);
 add_opcode_nn(0x3A, 0);
@@ -173902,7 +173867,7 @@ case 462:
 // KW_ALTD KW_IOE KW_LD KW_BC TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xDB);
 add_opcode_nn(0xED4B, 0);
@@ -173975,7 +173940,7 @@ case 468:
 // KW_ALTD KW_IOE KW_LD KW_BCDE TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xDB);
 add_opcode_nn(0x93, 0);
@@ -174164,7 +174129,7 @@ case 483:
 // KW_ALTD KW_IOE KW_LD KW_DE TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xDB);
 add_opcode_nn(0xED5B, 0);
@@ -174425,7 +174390,7 @@ case 504:
 // KW_ALTD KW_IOE KW_LD KW_HL TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xDB);
 add_opcode_nn(0x2A, 0);
@@ -174438,7 +174403,7 @@ case 505:
 // KW_ALTD KW_IOE KW_LD KW_JK TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xDB);
 add_opcode_nn(0x99, 0);
@@ -174511,7 +174476,7 @@ case 511:
 // KW_ALTD KW_IOE KW_LD KW_JKHL TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xDB);
 add_opcode_nn(0x94, 0);
@@ -175806,11 +175771,9 @@ warn_if_expr_in_parens();
 add_opcode(0x76);
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -175829,11 +175792,9 @@ warn_if_expr_in_parens();
 add_opcode(0x76);
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -175852,11 +175813,9 @@ warn_if_expr_in_parens();
 add_opcode(0x76);
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -175875,11 +175834,9 @@ warn_if_expr_in_parens();
 add_opcode(0x76);
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -175898,11 +175855,9 @@ warn_if_expr_in_parens();
 add_opcode(0x76);
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -176401,7 +176356,7 @@ case 644:
 // KW_ALTD KW_IOI KW_LD KW_A TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xD3);
 add_opcode_nn(0x3A, 0);
@@ -176502,7 +176457,7 @@ case 652:
 // KW_ALTD KW_IOI KW_LD KW_BC TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xD3);
 add_opcode_nn(0xED4B, 0);
@@ -176575,7 +176530,7 @@ case 658:
 // KW_ALTD KW_IOI KW_LD KW_BCDE TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xD3);
 add_opcode_nn(0x93, 0);
@@ -176764,7 +176719,7 @@ case 673:
 // KW_ALTD KW_IOI KW_LD KW_DE TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xD3);
 add_opcode_nn(0xED5B, 0);
@@ -177025,7 +176980,7 @@ case 694:
 // KW_ALTD KW_IOI KW_LD KW_HL TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xD3);
 add_opcode_nn(0x2A, 0);
@@ -177038,7 +176993,7 @@ case 695:
 // KW_ALTD KW_IOI KW_LD KW_JK TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xD3);
 add_opcode_nn(0x99, 0);
@@ -177111,7 +177066,7 @@ case 701:
 // KW_ALTD KW_IOI KW_LD KW_JKHL TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode(0xD3);
 add_opcode_nn(0x94, 0);
@@ -182746,7 +182701,7 @@ case 1139:
 // KW_LDF KW_A1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode_nnn(0x9A, 0);
 break;
@@ -182759,7 +182714,7 @@ case 1140:
 // KW_LDF KW_BC1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode_nnn(0xED0A, 0);
 break;
@@ -182772,7 +182727,7 @@ case 1141:
 // KW_LDF KW_BCDE1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode_nnn(0xDD0A, 0);
 break;
@@ -182785,7 +182740,7 @@ case 1142:
 // KW_LDF KW_DE1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode_nnn(0xED1A, 0);
 break;
@@ -182798,7 +182753,7 @@ case 1143:
 // KW_LDF KW_HL1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode_nnn(0x92, 0);
 break;
@@ -182811,7 +182766,7 @@ case 1144:
 // KW_LDF KW_JKHL1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode_nnn(0xFD0A, 0);
 break;
@@ -182824,7 +182779,7 @@ case 1145:
 // KW_LDF KW_PW1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode_nnn(0xED08, 0);
 break;
@@ -182837,7 +182792,7 @@ case 1146:
 // KW_LDF KW_PX1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode_nnn(0xED18, 0);
 break;
@@ -182850,7 +182805,7 @@ case 1147:
 // KW_LDF KW_PY1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode_nnn(0xED28, 0);
 break;
@@ -182863,7 +182818,7 @@ case 1148:
 // KW_LDF KW_PZ1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x76);
 add_opcode_nnn(0xED38, 0);
 break;
@@ -183652,11 +183607,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -183675,11 +183628,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -183698,11 +183649,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -183721,11 +183670,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -183744,11 +183691,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -183767,11 +183712,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -183790,11 +183733,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -183988,11 +183929,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -184011,11 +183950,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -184209,11 +184146,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -184232,11 +184167,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -184442,11 +184375,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -184465,11 +184396,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -184663,11 +184592,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -184686,11 +184613,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -185033,11 +184958,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -185056,11 +184979,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -185079,11 +185000,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -185102,11 +185021,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -185125,11 +185042,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -185148,11 +185063,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -185171,11 +185084,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -185333,11 +185244,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -185356,11 +185265,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -185379,11 +185286,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -185402,11 +185307,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -185564,11 +185467,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -185587,11 +185488,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -185749,11 +185648,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -185772,11 +185669,9 @@ case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -187299,11 +187194,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187322,11 +187215,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187345,11 +187236,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187368,11 +187257,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187391,11 +187278,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187414,11 +187299,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187437,11 +187320,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187460,11 +187341,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187483,11 +187362,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187506,11 +187383,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187527,11 +187402,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187548,11 +187421,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187569,11 +187440,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187590,11 +187459,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187611,11 +187478,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187632,11 +187497,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187653,11 +187516,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187675,11 +187536,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187697,11 +187556,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187719,11 +187576,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187741,11 +187596,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187763,11 +187616,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187784,11 +187635,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187805,11 +187654,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187826,11 +187673,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187847,11 +187692,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187868,11 +187711,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187890,11 +187731,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187912,11 +187751,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187934,11 +187771,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187956,11 +187791,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -187978,11 +187811,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188000,11 +187831,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188022,11 +187851,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188044,11 +187871,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188066,11 +187891,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188088,11 +187911,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188110,11 +187931,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188132,11 +187951,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188154,11 +187971,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188176,11 +187991,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188198,11 +188011,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188220,11 +188031,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188242,11 +188051,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188264,11 +188071,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188286,11 +188091,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188308,11 +188111,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -188331,17 +188132,13 @@ add_opcode(0xCC);
 break;
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode(0xF5);
 add_opcode(0x7C);
 add_opcode(0xB5);
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
+add_opcode_jr(0x28);
 add_opcode(0x210100);
 add_label(target1);
 add_opcode(0xF1);
@@ -188349,17 +188146,13 @@ add_opcode(0xF1);
 break;
 case CPU_8080: case CPU_8085: case CPU_GBZ80: 
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode(0xF5);
 add_opcode(0x7C);
 add_opcode(0xB5);
-m_exprs.push_back(target_expr1);
 add_opcode_nn(0xCA);
-m_exprs.pop_back();
 add_opcode(0x210100);
 add_label(target1);
 add_opcode(0xF1);
@@ -188377,17 +188170,13 @@ add_opcode(0xDDCC);
 break;
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_R800: case CPU_Z80N: 
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode(0xF5);
 add_opcode(0xDD7C);
 add_opcode(0xDDB5);
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
+add_opcode_jr(0x28);
 add_opcode(0xDD210100);
 add_label(target1);
 add_opcode(0xF1);
@@ -188395,20 +188184,16 @@ add_opcode(0xF1);
 break;
 case CPU_KC160: case CPU_KC160_Z80: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: 
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode(0xF5);
 add_opcode(0xE5);
 add_opcode(0xDDE5);
 add_opcode(0xE1);
 add_opcode(0x7C);
 add_opcode(0xB5);
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
+add_opcode_jr(0x28);
 add_opcode(0x210100);
 add_label(target1);
 add_opcode(0xE5);
@@ -188429,20 +188214,16 @@ add_opcode(0xFDCC);
 break;
 case CPU_KC160: case CPU_KC160_Z80: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: 
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode(0xF5);
 add_opcode(0xE5);
 add_opcode(0xFDE5);
 add_opcode(0xE1);
 add_opcode(0x7C);
 add_opcode(0xB5);
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
+add_opcode_jr(0x28);
 add_opcode(0x210100);
 add_label(target1);
 add_opcode(0xE5);
@@ -188453,17 +188234,13 @@ add_opcode(0xF1);
 break;
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_R800: case CPU_Z80N: 
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode(0xF5);
 add_opcode(0xFD7C);
 add_opcode(0xFDB5);
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
+add_opcode_jr(0x28);
 add_opcode(0xFD210100);
 add_label(target1);
 add_opcode(0xF1);
@@ -188542,14 +188319,10 @@ break;
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x30);
-m_exprs.pop_back();
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x30);
 add_opcode_nn(0xCD);
 add_label(target1);
 }
@@ -188577,14 +188350,10 @@ break;
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x20);
-m_exprs.pop_back();
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x20);
 add_opcode_nn(0xCD);
 add_label(target1);
 }
@@ -188612,14 +188381,10 @@ break;
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x38);
 add_opcode_nn(0xCD);
 add_label(target1);
 }
@@ -188636,17 +188401,11 @@ switch (g_cpu) {
 case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode_nn(0xCD);
 add_label(target2);
 }
@@ -188654,17 +188413,11 @@ break;
 case CPU_EZ80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode_nnn(0xCD);
 add_label(target2);
 }
@@ -188672,17 +188425,11 @@ break;
 case CPU_8080: case CPU_8085: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
 add_opcode_nn(0xCA);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
 add_opcode_nn(0xDA);
-m_exprs.pop_back();
 add_opcode_nn(0xCD);
 add_label(target2);
 }
@@ -188699,22 +188446,14 @@ switch (g_cpu) {
 case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x30);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x28);
+add_opcode_jr(0x30);
 add_label(target1);
 add_opcode_nn(0xCD);
 add_label(target2);
@@ -188723,22 +188462,14 @@ break;
 case CPU_EZ80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x30);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x28);
+add_opcode_jr(0x30);
 add_label(target1);
 add_opcode_nnn(0xCD);
 add_label(target2);
@@ -188747,22 +188478,14 @@ break;
 case CPU_8080: case CPU_8085: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nn(0xCA);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
 add_opcode_nn(0xD2);
-m_exprs.pop_back();
 add_label(target1);
 add_opcode_nn(0xCD);
 add_label(target2);
@@ -188780,14 +188503,10 @@ switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nn(0xE2);
-m_exprs.pop_back();
 add_opcode_nn(0xCD);
 add_label(target1);
 }
@@ -188804,14 +188523,10 @@ switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nn(0xEA);
-m_exprs.pop_back();
 add_opcode_nn(0xCD);
 add_label(target1);
 }
@@ -188836,14 +188551,10 @@ break;
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nn(0xF2);
-m_exprs.pop_back();
 add_opcode_nn(0xCD);
 add_label(target1);
 }
@@ -188871,14 +188582,10 @@ break;
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x28);
 add_opcode_nn(0xCD);
 add_label(target1);
 }
@@ -188903,14 +188610,10 @@ break;
 case CPU_R2KA: case CPU_R3K: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nn(0xEA);
-m_exprs.pop_back();
 add_opcode_nn(0xCD);
 add_label(target1);
 }
@@ -188934,14 +188637,10 @@ break;
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nn(0xFA);
-m_exprs.pop_back();
 add_opcode_nn(0xCD);
 add_label(target1);
 }
@@ -188966,14 +188665,10 @@ break;
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nn(0xE2);
-m_exprs.pop_back();
 add_opcode_nn(0xCD);
 add_label(target1);
 }
@@ -188998,14 +188693,10 @@ break;
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nn(0xEA);
-m_exprs.pop_back();
 add_opcode_nn(0xCD);
 add_label(target1);
 }
@@ -189030,14 +188721,10 @@ break;
 case CPU_R2KA: case CPU_R3K: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nn(0xE2);
-m_exprs.pop_back();
 add_opcode_nn(0xCD);
 add_label(target1);
 }
@@ -189106,17 +188793,11 @@ switch (g_cpu) {
 case CPU_EZ80_Z80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0x52);
 add_opcode_nnn(0xCD);
 add_label(target2);
@@ -189125,17 +188806,11 @@ break;
 case CPU_EZ80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0x5B);
 add_opcode_nnn(0xCD);
 add_label(target2);
@@ -189151,22 +188826,14 @@ switch (g_cpu) {
 case CPU_EZ80_Z80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x30);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x28);
+add_opcode_jr(0x30);
 add_label(target1);
 add_opcode(0x52);
 add_opcode_nnn(0xCD);
@@ -189176,22 +188843,14 @@ break;
 case CPU_EZ80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x30);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x28);
+add_opcode_jr(0x30);
 add_label(target1);
 add_opcode(0x5B);
 add_opcode_nnn(0xCD);
@@ -189367,17 +189026,11 @@ switch (g_cpu) {
 case CPU_EZ80_Z80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0x40);
 add_opcode_nn(0xCD);
 add_label(target2);
@@ -189386,17 +189039,11 @@ break;
 case CPU_EZ80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0x49);
 add_opcode_nn(0xCD);
 add_label(target2);
@@ -189412,22 +189059,14 @@ switch (g_cpu) {
 case CPU_EZ80_Z80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x30);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x28);
+add_opcode_jr(0x30);
 add_label(target1);
 add_opcode(0x40);
 add_opcode_nnn(0xCD);
@@ -189437,22 +189076,14 @@ break;
 case CPU_EZ80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x30);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x28);
+add_opcode_jr(0x30);
 add_label(target1);
 add_opcode(0x49);
 add_opcode_nnn(0xCD);
@@ -189613,17 +189244,11 @@ switch (g_cpu) {
 case CPU_EZ80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0x5B);
 add_opcode_nnn(0xCD);
 add_label(target2);
@@ -189639,22 +189264,14 @@ switch (g_cpu) {
 case CPU_EZ80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x30);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x28);
+add_opcode_jr(0x30);
 add_label(target1);
 add_opcode(0x5B);
 add_opcode_nnn(0xCD);
@@ -189785,17 +189402,11 @@ switch (g_cpu) {
 case CPU_EZ80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0x49);
 add_opcode_nn(0xCD);
 add_label(target2);
@@ -189811,22 +189422,14 @@ switch (g_cpu) {
 case CPU_EZ80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x30);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x28);
+add_opcode_jr(0x30);
 add_label(target1);
 add_opcode(0x49);
 add_opcode_nnn(0xCD);
@@ -189957,17 +189560,11 @@ switch (g_cpu) {
 case CPU_EZ80_Z80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0x52);
 add_opcode_nnn(0xCD);
 add_label(target2);
@@ -189983,22 +189580,14 @@ switch (g_cpu) {
 case CPU_EZ80_Z80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x30);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x28);
+add_opcode_jr(0x30);
 add_label(target1);
 add_opcode(0x52);
 add_opcode_nnn(0xCD);
@@ -190129,17 +189718,11 @@ switch (g_cpu) {
 case CPU_EZ80_Z80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0x40);
 add_opcode_nn(0xCD);
 add_label(target2);
@@ -190155,22 +189738,14 @@ switch (g_cpu) {
 case CPU_EZ80_Z80: 
 warn_if_expr_in_parens();
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x30);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x28);
+add_opcode_jr(0x30);
 add_label(target1);
 add_opcode(0x40);
 add_opcode_nnn(0xCD);
@@ -192826,11 +192401,11 @@ case 1820:
 switch (g_cpu) {
 case CPU_GBZ80: 
 warn_if_expr_in_parens();
-add_jump_relative(0x0520);
+add_opcode_jr(0x0520);
 break;
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
-add_jump_relative(0x10);
+add_opcode_jr(0x10);
 break;
 case CPU_8080: case CPU_8085: 
 warn_if_expr_in_parens();
@@ -192860,7 +192435,7 @@ case 1822:
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
-add_jump_relative(0xED10);
+add_opcode_jr(0xED10);
 break;
 default:
 error_illegal_ident(); }
@@ -193234,11 +192809,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: break;
 default: error_int_range(const_expr); }
@@ -193248,11 +192821,9 @@ break;
 case CPU_KC160: case CPU_KC160_Z80: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: break;
 default: error_int_range(const_expr); }
@@ -193278,7 +192849,7 @@ case 1857:
 // KW_IN KW_A TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_8080: case CPU_8085: case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xDB);
 break;
 default:
@@ -193388,7 +192959,7 @@ case 1867:
 // KW_IN0 KW_A TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED38);
 break;
 default:
@@ -193399,7 +192970,7 @@ case 1868:
 // KW_IN0 KW_B TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED00);
 break;
 default:
@@ -193410,7 +192981,7 @@ case 1869:
 // KW_IN0 KW_C TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED08);
 break;
 default:
@@ -193421,7 +192992,7 @@ case 1870:
 // KW_IN0 KW_D TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED10);
 break;
 default:
@@ -193432,7 +193003,7 @@ case 1871:
 // KW_IN0 KW_E TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED18);
 break;
 default:
@@ -193444,7 +193015,7 @@ case 1872:
 // KW_IN0 expr TK_END
 switch (g_cpu) {
 case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED30);
 break;
 default:
@@ -193455,7 +193026,7 @@ case 1873:
 // KW_IN0 KW_H TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED20);
 break;
 default:
@@ -193466,7 +193037,7 @@ case 1874:
 // KW_IN0 KW_L TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED28);
 break;
 default:
@@ -195590,11 +195161,9 @@ warn_if_expr_in_parens();
 add_opcode(0xDB);
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -195613,11 +195182,9 @@ warn_if_expr_in_parens();
 add_opcode(0xDB);
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -195636,11 +195203,9 @@ warn_if_expr_in_parens();
 add_opcode(0xDB);
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -195659,11 +195224,9 @@ warn_if_expr_in_parens();
 add_opcode(0xDB);
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -195682,11 +195245,9 @@ warn_if_expr_in_parens();
 add_opcode(0xDB);
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -196203,7 +195764,7 @@ case 2096:
 // KW_IOE KW_LD KW_A1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode(0x76);
 add_opcode_nn(0x3A, 0);
@@ -196314,7 +195875,7 @@ case 2104:
 // KW_IOE KW_LD KW_BC1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode(0x76);
 add_opcode_nn(0xED4B, 0);
@@ -196393,7 +195954,7 @@ case 2110:
 // KW_IOE KW_LD KW_BCDE1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode(0x76);
 add_opcode_nn(0x93, 0);
@@ -196601,7 +196162,7 @@ case 2125:
 // KW_IOE KW_LD KW_DE1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode(0x76);
 add_opcode_nn(0xED5B, 0);
@@ -196887,7 +196448,7 @@ case 2146:
 // KW_IOE KW_LD KW_HL1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode(0x76);
 add_opcode_nn(0x2A, 0);
@@ -196901,7 +196462,7 @@ case 2147:
 // KW_IOE KW_LD KW_JK1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode(0x76);
 add_opcode_nn(0x99, 0);
@@ -196980,7 +196541,7 @@ case 2153:
 // KW_IOE KW_LD KW_JKHL1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode(0x76);
 add_opcode_nn(0x94, 0);
@@ -198081,11 +197642,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -198103,11 +197662,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -198125,11 +197682,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -198147,11 +197702,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -198169,11 +197722,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -198706,7 +198257,7 @@ case 2278:
 // KW_IOE KW_LD KW_A TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0x3A, 0);
 break;
@@ -198801,7 +198352,7 @@ case 2286:
 // KW_IOE KW_LD KW_BC TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0xED4B, 0);
 break;
@@ -198868,7 +198419,7 @@ case 2292:
 // KW_IOE KW_LD KW_BCDE TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0x93, 0);
 break;
@@ -199046,7 +198597,7 @@ case 2307:
 // KW_IOE KW_LD KW_DE TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0xED5B, 0);
 break;
@@ -199290,7 +198841,7 @@ case 2328:
 // KW_IOE KW_LD KW_HL TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0x2A, 0);
 break;
@@ -199302,7 +198853,7 @@ case 2329:
 // KW_IOE KW_LD KW_IX TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0xDD2A, 0);
 break;
@@ -199314,7 +198865,7 @@ case 2330:
 // KW_IOE KW_LD KW_IY TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0xFD2A, 0);
 break;
@@ -199326,7 +198877,7 @@ case 2331:
 // KW_IOE KW_LD KW_JK TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0x99, 0);
 break;
@@ -199393,7 +198944,7 @@ case 2337:
 // KW_IOE KW_LD KW_JKHL TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0x94, 0);
 break;
@@ -199488,7 +199039,7 @@ case 2345:
 // KW_IOE KW_LD KW_SP TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0xED7B, 0);
 break;
@@ -200419,7 +199970,7 @@ case 2424:
 // KW_IOE KW_LD expr TK_COMMA KW_A TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0x32, 0);
 break;
@@ -200431,7 +199982,7 @@ case 2425:
 // KW_IOE KW_LD expr TK_COMMA KW_BC TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0xED43, 0);
 break;
@@ -200443,7 +199994,7 @@ case 2426:
 // KW_IOE KW_LD expr TK_COMMA KW_BCDE TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0x83, 0);
 break;
@@ -200455,7 +200006,7 @@ case 2427:
 // KW_IOE KW_LD expr TK_COMMA KW_DE TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0xED53, 0);
 break;
@@ -200467,7 +200018,7 @@ case 2428:
 // KW_IOE KW_LD expr TK_COMMA KW_HL TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0x22, 0);
 break;
@@ -200479,7 +200030,7 @@ case 2429:
 // KW_IOE KW_LD expr TK_COMMA KW_IX TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0xDD22, 0);
 break;
@@ -200491,7 +200042,7 @@ case 2430:
 // KW_IOE KW_LD expr TK_COMMA KW_IY TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0xFD22, 0);
 break;
@@ -200503,7 +200054,7 @@ case 2431:
 // KW_IOE KW_LD expr TK_COMMA KW_JK TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0x89, 0);
 break;
@@ -200515,7 +200066,7 @@ case 2432:
 // KW_IOE KW_LD expr TK_COMMA KW_JKHL TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0x84, 0);
 break;
@@ -200527,7 +200078,7 @@ case 2433:
 // KW_IOE KW_LD expr TK_COMMA KW_SP TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xDB);
 add_opcode_nn(0xED73, 0);
 break;
@@ -200752,11 +200303,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -200774,11 +200323,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -200796,11 +200343,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -200818,11 +200363,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -200840,11 +200383,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -201182,11 +200723,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -201204,11 +200743,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -201226,11 +200763,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -201248,11 +200783,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -201270,11 +200803,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xDB);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -202209,11 +201740,9 @@ warn_if_expr_in_parens();
 add_opcode(0xD3);
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -202232,11 +201761,9 @@ warn_if_expr_in_parens();
 add_opcode(0xD3);
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -202255,11 +201782,9 @@ warn_if_expr_in_parens();
 add_opcode(0xD3);
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -202278,11 +201803,9 @@ warn_if_expr_in_parens();
 add_opcode(0xD3);
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -202301,11 +201824,9 @@ warn_if_expr_in_parens();
 add_opcode(0xD3);
 add_opcode(0x76);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -202822,7 +202343,7 @@ case 2593:
 // KW_IOI KW_LD KW_A1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode(0x76);
 add_opcode_nn(0x3A, 0);
@@ -202933,7 +202454,7 @@ case 2601:
 // KW_IOI KW_LD KW_BC1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode(0x76);
 add_opcode_nn(0xED4B, 0);
@@ -203012,7 +202533,7 @@ case 2607:
 // KW_IOI KW_LD KW_BCDE1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode(0x76);
 add_opcode_nn(0x93, 0);
@@ -203220,7 +202741,7 @@ case 2622:
 // KW_IOI KW_LD KW_DE1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode(0x76);
 add_opcode_nn(0xED5B, 0);
@@ -203506,7 +203027,7 @@ case 2643:
 // KW_IOI KW_LD KW_HL1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode(0x76);
 add_opcode_nn(0x2A, 0);
@@ -203520,7 +203041,7 @@ case 2644:
 // KW_IOI KW_LD KW_JK1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode(0x76);
 add_opcode_nn(0x99, 0);
@@ -203599,7 +203120,7 @@ case 2650:
 // KW_IOI KW_LD KW_JKHL1 TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode(0x76);
 add_opcode_nn(0x94, 0);
@@ -204700,11 +204221,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -204722,11 +204241,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -204744,11 +204261,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -204766,11 +204281,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -204788,11 +204301,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -205325,7 +204836,7 @@ case 2775:
 // KW_IOI KW_LD KW_A TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0x3A, 0);
 break;
@@ -205420,7 +204931,7 @@ case 2783:
 // KW_IOI KW_LD KW_BC TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0xED4B, 0);
 break;
@@ -205487,7 +204998,7 @@ case 2789:
 // KW_IOI KW_LD KW_BCDE TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0x93, 0);
 break;
@@ -205665,7 +205176,7 @@ case 2804:
 // KW_IOI KW_LD KW_DE TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0xED5B, 0);
 break;
@@ -205909,7 +205420,7 @@ case 2825:
 // KW_IOI KW_LD KW_HL TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0x2A, 0);
 break;
@@ -205921,7 +205432,7 @@ case 2826:
 // KW_IOI KW_LD KW_IX TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0xDD2A, 0);
 break;
@@ -205933,7 +205444,7 @@ case 2827:
 // KW_IOI KW_LD KW_IY TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0xFD2A, 0);
 break;
@@ -205945,7 +205456,7 @@ case 2828:
 // KW_IOI KW_LD KW_JK TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0x99, 0);
 break;
@@ -206012,7 +205523,7 @@ case 2834:
 // KW_IOI KW_LD KW_JKHL TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0x94, 0);
 break;
@@ -206107,7 +205618,7 @@ case 2842:
 // KW_IOI KW_LD KW_SP TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0xED7B, 0);
 break;
@@ -207038,7 +206549,7 @@ case 2921:
 // KW_IOI KW_LD expr TK_COMMA KW_A TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0x32, 0);
 break;
@@ -207050,7 +206561,7 @@ case 2922:
 // KW_IOI KW_LD expr TK_COMMA KW_BC TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0xED43, 0);
 break;
@@ -207062,7 +206573,7 @@ case 2923:
 // KW_IOI KW_LD expr TK_COMMA KW_BCDE TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0x83, 0);
 break;
@@ -207074,7 +206585,7 @@ case 2924:
 // KW_IOI KW_LD expr TK_COMMA KW_DE TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0xED53, 0);
 break;
@@ -207086,7 +206597,7 @@ case 2925:
 // KW_IOI KW_LD expr TK_COMMA KW_HL TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0x22, 0);
 break;
@@ -207098,7 +206609,7 @@ case 2926:
 // KW_IOI KW_LD expr TK_COMMA KW_IX TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0xDD22, 0);
 break;
@@ -207110,7 +206621,7 @@ case 2927:
 // KW_IOI KW_LD expr TK_COMMA KW_IY TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0xFD22, 0);
 break;
@@ -207122,7 +206633,7 @@ case 2928:
 // KW_IOI KW_LD expr TK_COMMA KW_JK TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0x89, 0);
 break;
@@ -207134,7 +206645,7 @@ case 2929:
 // KW_IOI KW_LD expr TK_COMMA KW_JKHL TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0x84, 0);
 break;
@@ -207146,7 +206657,7 @@ case 2930:
 // KW_IOI KW_LD expr TK_COMMA KW_SP TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD3);
 add_opcode_nn(0xED73, 0);
 break;
@@ -207371,11 +206882,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -207393,11 +206902,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -207415,11 +206922,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -207437,11 +206942,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -207459,11 +206962,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -207801,11 +207302,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -207823,11 +207322,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -207845,11 +207342,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -207867,11 +207362,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -207889,11 +207382,9 @@ case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K:
 warn_if_expr_in_parens();
 add_opcode(0xD3);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -208285,11 +207776,9 @@ switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: break;
 default: error_int_range(const_expr); }
@@ -208352,14 +207841,10 @@ break;
 case CPU_8080: case CPU_8085: case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nn(0xCA);
-m_exprs.pop_back();
 add_opcode_nn(0xD2);
 add_label(target1);
 }
@@ -208511,14 +207996,10 @@ break;
 case CPU_8080: case CPU_8085: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nn(0xCA);
-m_exprs.pop_back();
 add_opcode_nn(0xD2);
 add_label(target1);
 }
@@ -208526,14 +208007,10 @@ break;
 case CPU_EZ80: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nnn(0xCA);
-m_exprs.pop_back();
 add_opcode_nnn(0xD2);
 add_label(target1);
 }
@@ -208788,15 +208265,11 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode(0x5B);
-m_exprs.push_back(target_expr1);
 add_opcode_nnn(0xCA);
-m_exprs.pop_back();
 add_opcode(0x5B);
 add_opcode_nnn(0xD2);
 add_label(target1);
@@ -208999,15 +208472,11 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode(0x40);
-m_exprs.push_back(target_expr1);
 add_opcode_nn(0xCA);
-m_exprs.pop_back();
 add_opcode(0x40);
 add_opcode_nn(0xD2);
 add_label(target1);
@@ -209429,14 +208898,10 @@ switch (g_cpu) {
 case CPU_KC160: case CPU_KC160_Z80: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nnn(0xEDCA);
-m_exprs.pop_back();
 add_opcode_nnn(0xEDD2);
 add_label(target1);
 }
@@ -209510,7 +208975,7 @@ case 3101:
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
-add_jump_relative(0x38);
+add_opcode_jr(0x38);
 break;
 case CPU_8080: case CPU_8085: 
 warn_if_expr_in_parens();
@@ -209526,7 +208991,7 @@ case 3102:
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
-add_jump_relative(0x28);
+add_opcode_jr(0x28);
 break;
 case CPU_8080: case CPU_8085: 
 warn_if_expr_in_parens();
@@ -209542,7 +209007,7 @@ case 3103:
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
-add_jump_relative(0x30);
+add_opcode_jr(0x30);
 break;
 case CPU_8080: case CPU_8085: 
 warn_if_expr_in_parens();
@@ -209557,7 +209022,7 @@ case 3104:
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
-add_jump_relative(0xA0);
+add_opcode_jr(0xA0);
 break;
 default:
 error_illegal_ident(); }
@@ -209568,34 +209033,26 @@ case 3105:
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
-add_jump_relative(0xA8);
+add_opcode_jr(0xA8);
 break;
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-add_jump_relative(0x30);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
+add_opcode_jr(0x28);
+add_opcode_jr(0x30);
 add_label(target1);
 }
 break;
 case CPU_8080: case CPU_8085: 
 warn_if_expr_in_parens();
 {
-string target1 = Section::autolabel();
-ScannedLine line1;
-TextScanner ts1{ target1, line1 };
-auto target_expr1 = make_shared<Expr>();
-xassert(target_expr1->parse(line1));
-m_exprs.push_back(target_expr1);
+string target1 = autolabel();
+Expr* target_expr1 = new Expr(*assembler_, target1);
+exprs_.push_back(target_expr1);
 add_opcode_nn(0xCA);
-m_exprs.pop_back();
 add_opcode_nn(0xD2);
 add_label(target1);
 }
@@ -209609,8 +209066,8 @@ case 3106:
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
-add_jump_relative(0x28);
-add_jump_relative(0x38);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 break;
 case CPU_8080: case CPU_8085: 
 warn_if_expr_in_parens();
@@ -209626,7 +209083,7 @@ case 3107:
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
-add_jump_relative(0xB0);
+add_opcode_jr(0xB0);
 break;
 default:
 error_illegal_ident(); }
@@ -209638,7 +209095,7 @@ case 3108:
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
-add_jump_relative(0x20);
+add_opcode_jr(0x20);
 break;
 case CPU_8080: case CPU_8085: 
 warn_if_expr_in_parens();
@@ -209653,7 +209110,7 @@ case 3109:
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
-add_jump_relative(0xB8);
+add_opcode_jr(0xB8);
 break;
 default:
 error_illegal_ident(); }
@@ -209664,7 +209121,7 @@ case 3110:
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
-add_jump_relative(0x18);
+add_opcode_jr(0x18);
 break;
 case CPU_8080: case CPU_8085: 
 warn_if_expr_in_parens();
@@ -209679,7 +209136,7 @@ case 3111:
 // KW_JRE KW_LTU TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-add_jump_relative16(0xEDDB);
+add_opcode_jre(0xEDDB);
 break;
 default:
 error_illegal_ident(); }
@@ -209690,7 +209147,7 @@ case 3112:
 // KW_JRE KW_Z TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-add_jump_relative16(0xEDCB);
+add_opcode_jre(0xEDCB);
 break;
 default:
 error_illegal_ident(); }
@@ -209701,7 +209158,7 @@ case 3113:
 // KW_JRE KW_NC TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-add_jump_relative16(0xEDD3);
+add_opcode_jre(0xEDD3);
 break;
 default:
 error_illegal_ident(); }
@@ -209711,7 +209168,7 @@ case 3114:
 // KW_JRE KW_GT TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-add_jump_relative16(0xEDA3);
+add_opcode_jre(0xEDA3);
 break;
 default:
 error_illegal_ident(); }
@@ -209721,7 +209178,7 @@ case 3115:
 // KW_JRE KW_GTU TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-add_jump_relative16(0xEDAB);
+add_opcode_jre(0xEDAB);
 break;
 default:
 error_illegal_ident(); }
@@ -209731,7 +209188,7 @@ case 3116:
 // KW_JRE KW_LT TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-add_jump_relative16(0xEDB3);
+add_opcode_jre(0xEDB3);
 break;
 default:
 error_illegal_ident(); }
@@ -209742,7 +209199,7 @@ case 3117:
 // KW_JRE KW_NZ TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-add_jump_relative16(0xEDC3);
+add_opcode_jre(0xEDC3);
 break;
 default:
 error_illegal_ident(); }
@@ -209752,7 +209209,7 @@ case 3118:
 // KW_JRE KW_V TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-add_jump_relative16(0xEDBB);
+add_opcode_jre(0xEDBB);
 break;
 default:
 error_illegal_ident(); }
@@ -209762,7 +209219,7 @@ case 3119:
 // KW_JRE expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-add_jump_relative16(0x98);
+add_opcode_jre(0x98);
 break;
 default:
 error_illegal_ident(); }
@@ -210000,11 +209457,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -210022,11 +209477,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -210044,11 +209497,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -210066,11 +209517,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -210264,11 +209713,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -210286,11 +209733,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -210308,11 +209753,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -210330,11 +209773,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -211745,11 +211186,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -211767,11 +211206,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -211789,11 +211226,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -211811,11 +211246,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -212009,11 +211442,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -212031,11 +211462,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -212053,11 +211482,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -212075,11 +211502,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -213763,11 +213188,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -213785,11 +213208,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -213807,11 +213228,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -213829,11 +213248,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -214027,11 +213444,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -214049,11 +213464,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -214071,11 +213484,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -214093,11 +213504,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -214829,11 +214238,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -214851,11 +214258,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -214873,11 +214278,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -214895,11 +214298,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -215093,11 +214494,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -215115,11 +214514,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -215137,11 +214534,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -215159,11 +214554,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -216685,11 +216078,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -216707,11 +216098,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -216729,11 +216118,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -216751,11 +216138,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -216949,11 +216334,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -216971,11 +216354,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -216993,11 +216374,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -217015,11 +216394,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -217721,11 +217098,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -217743,11 +217118,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -217765,11 +217138,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -217787,11 +217158,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -217985,11 +217354,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -218007,11 +217374,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -218029,11 +217394,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -218051,11 +217414,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -221580,11 +220941,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -221602,11 +220961,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -221624,11 +220981,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -221646,11 +221001,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -221844,11 +221197,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -221866,11 +221217,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -221888,11 +221237,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -221910,11 +221257,9 @@ switch (g_cpu) {
 case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -225301,7 +224646,7 @@ case 4442:
 // KW_LD TK_DOT KW_SIL KW_A TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_EZ80_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x52);
 add_opcode_nnn(0x3A, 0);
 break;
@@ -225314,7 +224659,7 @@ case 4443:
 // KW_LD TK_DOT KW_SIL expr TK_COMMA KW_A TK_END
 switch (g_cpu) {
 case CPU_EZ80_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x52);
 add_opcode_nnn(0x32, 0);
 break;
@@ -225327,7 +224672,7 @@ case 4444:
 // KW_LD TK_DOT KW_LIS KW_A TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x49);
 add_opcode_nn(0x3A, 0);
 break;
@@ -225340,7 +224685,7 @@ case 4445:
 // KW_LD TK_DOT KW_LIS expr TK_COMMA KW_A TK_END
 switch (g_cpu) {
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x49);
 add_opcode_nn(0x32, 0);
 break;
@@ -227801,7 +227146,7 @@ case 4632:
 // KW_LD TK_DOT KW_LIL expr TK_COMMA KW_BC TK_END
 switch (g_cpu) {
 case CPU_EZ80_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x5B);
 add_opcode_nnn(0xED43, 0);
 break;
@@ -227813,7 +227158,7 @@ case 4633:
 // KW_LD TK_DOT KW_LIL expr TK_COMMA KW_DE TK_END
 switch (g_cpu) {
 case CPU_EZ80_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x5B);
 add_opcode_nnn(0xED53, 0);
 break;
@@ -227825,7 +227170,7 @@ case 4634:
 // KW_LD TK_DOT KW_LIL expr TK_COMMA KW_HL TK_END
 switch (g_cpu) {
 case CPU_EZ80_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x5B);
 add_opcode_nnn(0x22, 0);
 break;
@@ -227837,7 +227182,7 @@ case 4635:
 // KW_LD TK_DOT KW_LIL expr TK_COMMA KW_IX TK_END
 switch (g_cpu) {
 case CPU_EZ80_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x5B);
 add_opcode_nnn(0xDD22, 0);
 break;
@@ -227849,7 +227194,7 @@ case 4636:
 // KW_LD TK_DOT KW_LIL expr TK_COMMA KW_IY TK_END
 switch (g_cpu) {
 case CPU_EZ80_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x5B);
 add_opcode_nnn(0xFD22, 0);
 break;
@@ -227861,7 +227206,7 @@ case 4637:
 // KW_LD TK_DOT KW_LIL expr TK_COMMA KW_SP TK_END
 switch (g_cpu) {
 case CPU_EZ80_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x5B);
 add_opcode_nnn(0xED73, 0);
 break;
@@ -230370,7 +229715,7 @@ case 4828:
 // KW_LD TK_DOT KW_SIS expr TK_COMMA KW_BC TK_END
 switch (g_cpu) {
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x40);
 add_opcode_nn(0xED43, 0);
 break;
@@ -230382,7 +229727,7 @@ case 4829:
 // KW_LD TK_DOT KW_SIS expr TK_COMMA KW_DE TK_END
 switch (g_cpu) {
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x40);
 add_opcode_nn(0xED53, 0);
 break;
@@ -230394,7 +229739,7 @@ case 4830:
 // KW_LD TK_DOT KW_SIS expr TK_COMMA KW_HL TK_END
 switch (g_cpu) {
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x40);
 add_opcode_nn(0x22, 0);
 break;
@@ -230406,7 +229751,7 @@ case 4831:
 // KW_LD TK_DOT KW_SIS expr TK_COMMA KW_IX TK_END
 switch (g_cpu) {
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x40);
 add_opcode_nn(0xDD22, 0);
 break;
@@ -230418,7 +229763,7 @@ case 4832:
 // KW_LD TK_DOT KW_SIS expr TK_COMMA KW_IY TK_END
 switch (g_cpu) {
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x40);
 add_opcode_nn(0xFD22, 0);
 break;
@@ -230430,7 +229775,7 @@ case 4833:
 // KW_LD TK_DOT KW_SIS expr TK_COMMA KW_SP TK_END
 switch (g_cpu) {
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0x40);
 add_opcode_nn(0xED73, 0);
 break;
@@ -238724,15 +238069,15 @@ case 5577:
 // KW_LD expr TK_COMMA KW_A TK_END
 switch (g_cpu) {
 case CPU_8080: case CPU_8085: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0x32, 0);
 break;
 case CPU_GBZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0xEA, 0);
 break;
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0x32, 0);
 break;
 default:
@@ -238743,7 +238088,7 @@ case 5578:
 // KW_LD expr TK_COMMA KW_BC TK_END
 switch (g_cpu) {
 case CPU_8080: case CPU_8085: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xF5);
 add_opcode(0x79);
 add_opcode_nn(0x32, 0);
@@ -238752,7 +238097,7 @@ add_opcode_nn(0x32, 1);
 add_opcode(0xF1);
 break;
 case CPU_GBZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xF5);
 add_opcode(0x79);
 add_opcode_nn(0xEA, 0);
@@ -238761,11 +238106,11 @@ add_opcode_nn(0xEA, 1);
 add_opcode(0xF1);
 break;
 case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0xED43, 0);
 break;
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED43, 0);
 break;
 default:
@@ -238776,7 +238121,7 @@ case 5579:
 // KW_LD expr TK_COMMA KW_BCDE TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0x83, 0);
 break;
 default:
@@ -238787,13 +238132,13 @@ case 5580:
 // KW_LD expr TK_COMMA KW_DE TK_END
 switch (g_cpu) {
 case CPU_8080: case CPU_8085: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xEB);
 add_opcode_nn(0x22, 0);
 add_opcode(0xEB);
 break;
 case CPU_GBZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xF5);
 add_opcode(0x7B);
 add_opcode_nn(0xEA, 0);
@@ -238802,11 +238147,11 @@ add_opcode_nn(0xEA, 1);
 add_opcode(0xF1);
 break;
 case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0xED53, 0);
 break;
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED53, 0);
 break;
 default:
@@ -238817,7 +238162,7 @@ case 5581:
 // KW_LD expr TK_COMMA KW_HL TK_END
 switch (g_cpu) {
 case CPU_GBZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xD5);
 add_opcode(0xE5);
 add_opcode(0x54);
@@ -238830,11 +238175,11 @@ add_opcode(0xE1);
 add_opcode(0xD1);
 break;
 case CPU_8080: case CPU_8085: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0x22, 0);
 break;
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0x22, 0);
 break;
 default:
@@ -238845,11 +238190,11 @@ case 5582:
 // KW_LD expr TK_COMMA KW_IX TK_END
 switch (g_cpu) {
 case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0xDD22, 0);
 break;
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xDD22, 0);
 break;
 default:
@@ -238860,11 +238205,11 @@ case 5583:
 // KW_LD expr TK_COMMA KW_IY TK_END
 switch (g_cpu) {
 case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0xFD22, 0);
 break;
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xFD22, 0);
 break;
 default:
@@ -238875,7 +238220,7 @@ case 5584:
 // KW_LD expr TK_COMMA KW_JK TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0x89, 0);
 break;
 default:
@@ -238886,7 +238231,7 @@ case 5585:
 // KW_LD expr TK_COMMA KW_JKHL TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0x84, 0);
 break;
 default:
@@ -238897,7 +238242,7 @@ case 5586:
 // KW_LD expr TK_COMMA KW_SP TK_END
 switch (g_cpu) {
 case CPU_8080: case CPU_8085: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode(0xE5);
 add_opcode(0x210200);
 add_opcode(0x39);
@@ -238905,15 +238250,15 @@ add_opcode_nn(0x22, 0);
 add_opcode(0xE1);
 break;
 case CPU_GBZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0x08, 0);
 break;
 case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0xED73, 0);
 break;
 case CPU_EZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED73, 0);
 break;
 default:
@@ -239064,11 +238409,11 @@ case 5599:
 // KW_LDF KW_A TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0x9A, 0);
 break;
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED3B, 0);
 break;
 default:
@@ -239079,7 +238424,7 @@ case 5600:
 // KW_LDF KW_AHL TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED2B, 0);
 break;
 default:
@@ -239090,11 +238435,11 @@ case 5601:
 // KW_LDF KW_BC TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED0A, 0);
 break;
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED8F, 0);
 break;
 default:
@@ -239105,7 +238450,7 @@ case 5602:
 // KW_LDF KW_BCDE TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xDD0A, 0);
 break;
 default:
@@ -239116,11 +238461,11 @@ case 5603:
 // KW_LDF KW_DE TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED1A, 0);
 break;
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED9F, 0);
 break;
 default:
@@ -239131,11 +238476,11 @@ case 5604:
 // KW_LDF KW_HL TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0x92, 0);
 break;
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xEDAF, 0);
 break;
 default:
@@ -239146,11 +238491,11 @@ case 5605:
 // KW_LDF KW_IX TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED2A, 0);
 break;
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED8B, 0);
 break;
 default:
@@ -239161,11 +238506,11 @@ case 5606:
 // KW_LDF KW_IY TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED3A, 0);
 break;
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED9B, 0);
 break;
 default:
@@ -239176,7 +238521,7 @@ case 5607:
 // KW_LDF KW_JKHL TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xFD0A, 0);
 break;
 default:
@@ -239187,7 +238532,7 @@ case 5608:
 // KW_LDF KW_PW TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED08, 0);
 break;
 default:
@@ -239198,7 +238543,7 @@ case 5609:
 // KW_LDF KW_PX TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED18, 0);
 break;
 default:
@@ -239209,7 +238554,7 @@ case 5610:
 // KW_LDF KW_PY TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED28, 0);
 break;
 default:
@@ -239220,7 +238565,7 @@ case 5611:
 // KW_LDF KW_PZ TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED38, 0);
 break;
 default:
@@ -239231,7 +238576,7 @@ case 5612:
 // KW_LDF KW_SP TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xEDBF, 0);
 break;
 default:
@@ -239242,7 +238587,7 @@ case 5613:
 // KW_LDF KW_XIX TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED0B, 0);
 break;
 default:
@@ -239253,7 +238598,7 @@ case 5614:
 // KW_LDF KW_YIY TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED1B, 0);
 break;
 default:
@@ -239264,11 +238609,11 @@ case 5615:
 // KW_LDF expr TK_COMMA KW_A TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0x8A, 0);
 break;
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED33, 0);
 break;
 default:
@@ -239279,7 +238624,7 @@ case 5616:
 // KW_LDF expr TK_COMMA KW_AHL TK_END
 switch (g_cpu) {
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED23, 0);
 break;
 default:
@@ -239290,11 +238635,11 @@ case 5617:
 // KW_LDF expr TK_COMMA KW_BC TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED0B, 0);
 break;
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED87, 0);
 break;
 default:
@@ -239305,7 +238650,7 @@ case 5618:
 // KW_LDF expr TK_COMMA KW_BCDE TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xDD0B, 0);
 break;
 default:
@@ -239316,11 +238661,11 @@ case 5619:
 // KW_LDF expr TK_COMMA KW_DE TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED1B, 0);
 break;
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED97, 0);
 break;
 default:
@@ -239331,11 +238676,11 @@ case 5620:
 // KW_LDF expr TK_COMMA KW_HL TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0x82, 0);
 break;
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xEDA7, 0);
 break;
 default:
@@ -239346,11 +238691,11 @@ case 5621:
 // KW_LDF expr TK_COMMA KW_IX TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED2B, 0);
 break;
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED83, 0);
 break;
 default:
@@ -239361,11 +238706,11 @@ case 5622:
 // KW_LDF expr TK_COMMA KW_IY TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED3B, 0);
 break;
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED93, 0);
 break;
 default:
@@ -239376,7 +238721,7 @@ case 5623:
 // KW_LDF expr TK_COMMA KW_JKHL TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xFD0B, 0);
 break;
 default:
@@ -239387,7 +238732,7 @@ case 5624:
 // KW_LDF expr TK_COMMA KW_PW TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED09, 0);
 break;
 default:
@@ -239398,7 +238743,7 @@ case 5625:
 // KW_LDF expr TK_COMMA KW_PX TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED19, 0);
 break;
 default:
@@ -239409,7 +238754,7 @@ case 5626:
 // KW_LDF expr TK_COMMA KW_PY TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED29, 0);
 break;
 default:
@@ -239420,7 +238765,7 @@ case 5627:
 // KW_LDF expr TK_COMMA KW_PZ TK_END
 switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED39, 0);
 break;
 default:
@@ -239431,7 +238776,7 @@ case 5628:
 // KW_LDF expr TK_COMMA KW_SP TK_END
 switch (g_cpu) {
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xEDB7, 0);
 break;
 default:
@@ -239442,7 +238787,7 @@ case 5629:
 // KW_LDF expr TK_COMMA KW_XIX TK_END
 switch (g_cpu) {
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED03, 0);
 break;
 default:
@@ -239453,7 +238798,7 @@ case 5630:
 // KW_LDF expr TK_COMMA KW_YIY TK_END
 switch (g_cpu) {
 case CPU_KC160: case CPU_KC160_Z80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nnn(0xED13, 0);
 break;
 default:
@@ -239464,7 +238809,7 @@ case 5631:
 // KW_LDH KW_A TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_GBZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_h(0xF0);
 break;
 default:
@@ -239475,7 +238820,7 @@ case 5632:
 // KW_LDH expr TK_COMMA KW_A TK_END
 switch (g_cpu) {
 case CPU_GBZ80: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_h(0xE0);
 break;
 default:
@@ -239936,7 +239281,7 @@ case 5676:
 // KW_LDP KW_HL TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0xED6D, 0);
 break;
 default:
@@ -239947,7 +239292,7 @@ case 5677:
 // KW_LDP KW_IX TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0xDD6D, 0);
 break;
 default:
@@ -239958,7 +239303,7 @@ case 5678:
 // KW_LDP KW_IY TK_COMMA expr TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0xFD6D, 0);
 break;
 default:
@@ -239999,7 +239344,7 @@ case 5682:
 // KW_LDP expr TK_COMMA KW_HL TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0xED65, 0);
 break;
 default:
@@ -240010,7 +239355,7 @@ case 5683:
 // KW_LDP expr TK_COMMA KW_IX TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0xDD65, 0);
 break;
 default:
@@ -240021,7 +239366,7 @@ case 5684:
 // KW_LDP expr TK_COMMA KW_IY TK_END
 switch (g_cpu) {
 case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_nn(0xFD65, 0);
 break;
 default:
@@ -242691,11 +242036,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: break;
 default: error_int_range(const_expr); }
@@ -242710,7 +242053,7 @@ case 5914:
 // KW_OUT expr TK_COMMA KW_A TK_END
 switch (g_cpu) {
 case CPU_8080: case CPU_8085: case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xD3);
 break;
 default:
@@ -242732,7 +242075,7 @@ case 5916:
 // KW_OUT0 expr TK_COMMA KW_A TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED39);
 break;
 default:
@@ -242743,7 +242086,7 @@ case 5917:
 // KW_OUT0 expr TK_COMMA KW_B TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED01);
 break;
 default:
@@ -242754,7 +242097,7 @@ case 5918:
 // KW_OUT0 expr TK_COMMA KW_C TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED09);
 break;
 default:
@@ -242765,7 +242108,7 @@ case 5919:
 // KW_OUT0 expr TK_COMMA KW_D TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED11);
 break;
 default:
@@ -242776,7 +242119,7 @@ case 5920:
 // KW_OUT0 expr TK_COMMA KW_E TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED19);
 break;
 default:
@@ -242787,7 +242130,7 @@ case 5921:
 // KW_OUT0 expr TK_COMMA KW_H TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED21);
 break;
 default:
@@ -242798,7 +242141,7 @@ case 5922:
 // KW_OUT0 expr TK_COMMA KW_L TK_END
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_Z180: 
-if (!expr_in_parens()) { error_expr_not_in_parens(); return; }
+error_if_expr_not_in_parens();
 add_opcode_n(0xED29);
 break;
 default:
@@ -243812,11 +243155,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -243835,11 +243176,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -243858,11 +243197,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -243881,11 +243218,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -243904,11 +243239,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -243927,11 +243260,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -243950,11 +243281,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -243973,11 +243302,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -243996,11 +243323,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244019,11 +243344,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244040,11 +243363,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244061,11 +243382,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244082,11 +243401,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244103,11 +243420,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244124,11 +243439,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244145,11 +243458,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244166,11 +243477,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244188,11 +243497,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244210,11 +243517,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244232,11 +243537,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244254,11 +243557,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244276,11 +243577,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244297,11 +243596,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244318,11 +243615,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244339,11 +243634,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244360,11 +243653,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244381,11 +243672,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244403,11 +243692,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244425,11 +243712,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244447,11 +243732,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244469,11 +243752,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244491,11 +243772,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244513,11 +243792,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244535,11 +243812,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244557,11 +243832,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244579,11 +243852,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244601,11 +243872,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244623,11 +243892,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244645,11 +243912,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244667,11 +243932,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244689,11 +243952,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244711,11 +243972,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244733,11 +243992,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244755,11 +244012,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244777,11 +244032,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244799,11 +244052,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244821,11 +244072,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -244853,34 +244102,22 @@ case 6065:
 switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0xC9);
 add_label(target2);
 }
 break;
 case CPU_8080: case CPU_8085: 
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
 add_opcode_nn(0xCA);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
 add_opcode_nn(0xDA);
-m_exprs.pop_back();
 add_opcode(0xC9);
 add_label(target2);
 }
@@ -245056,17 +244293,11 @@ case 6079:
 switch (g_cpu) {
 case CPU_EZ80_Z80: 
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0x49);
 add_opcode(0xC9);
 add_label(target2);
@@ -245074,17 +244305,11 @@ add_label(target2);
 break;
 case CPU_EZ80: 
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0x5B);
 add_opcode(0xC9);
 add_label(target2);
@@ -245247,17 +244472,11 @@ case 6090:
 switch (g_cpu) {
 case CPU_EZ80: 
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0x5B);
 add_opcode(0xC9);
 add_label(target2);
@@ -245390,17 +244609,11 @@ case 6101:
 switch (g_cpu) {
 case CPU_EZ80_Z80: 
 {
-string target2 = Section::autolabel();
-ScannedLine line2;
-TextScanner ts2{ target2, line2 };
-auto target_expr2 = make_shared<Expr>();
-xassert(target_expr2->parse(line2));
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x28);
-m_exprs.pop_back();
-m_exprs.push_back(target_expr2);
-add_jump_relative(0x38);
-m_exprs.pop_back();
+string target2 = autolabel();
+Expr* target_expr2 = new Expr(*assembler_, target2);
+exprs_.push_back(target_expr2);
+add_opcode_jr(0x28);
+add_opcode_jr(0x38);
 add_opcode(0x49);
 add_opcode(0xC9);
 add_label(target2);
@@ -246179,11 +245392,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: case 8: break;
 default: error_int_range(const_expr); }
@@ -246200,11 +245411,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: case 8: break;
 default: error_int_range(const_expr); }
@@ -246782,11 +245991,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: case 8: break;
 default: error_int_range(const_expr); }
@@ -246803,11 +246010,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: case 8: break;
 default: error_int_range(const_expr); }
@@ -247478,11 +246683,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: case 8: break;
 default: error_int_range(const_expr); }
@@ -247499,11 +246702,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: case 8: break;
 default: error_int_range(const_expr); }
@@ -248081,11 +247282,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: case 8: break;
 default: error_int_range(const_expr); }
@@ -248102,11 +247301,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: case 8: break;
 default: error_int_range(const_expr); }
@@ -248201,11 +247398,9 @@ switch (g_cpu) {
 case CPU_8085: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 64: break;
 default: error_int_range(const_expr); }
@@ -249344,11 +248539,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249367,11 +248560,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249390,11 +248581,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249413,11 +248602,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249436,11 +248623,9 @@ case CPU_EZ80_Z80:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249459,11 +248644,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249482,11 +248665,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249505,11 +248686,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249528,11 +248707,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249551,11 +248728,9 @@ case CPU_EZ80:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249572,11 +248747,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249593,11 +248766,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249614,11 +248785,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249635,11 +248804,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249656,11 +248823,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249677,11 +248842,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249698,11 +248861,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249720,11 +248881,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249742,11 +248901,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249764,11 +248921,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249786,11 +248941,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249808,11 +248961,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x52);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249829,11 +248980,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_GBZ80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249850,11 +248999,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249871,11 +249018,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249892,11 +249037,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249913,11 +249056,9 @@ switch (g_cpu) {
 case CPU_EZ80: case CPU_EZ80_Z80: case CPU_KC160: case CPU_KC160_Z80: case CPU_R2KA: case CPU_R3K: case CPU_R4K: case CPU_R5K: case CPU_R800: case CPU_Z180: case CPU_Z80: case CPU_Z80_STRICT: case CPU_Z80N: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249935,11 +249076,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249957,11 +249096,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -249979,11 +249116,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250001,11 +249136,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250023,11 +249156,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x5B);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250045,11 +249176,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250067,11 +249196,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250089,11 +249216,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250111,11 +249236,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250133,11 +249256,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x40);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250155,11 +249276,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250177,11 +249296,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250199,11 +249316,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250221,11 +249336,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250243,11 +249356,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x49);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250265,11 +249376,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250287,11 +249396,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250309,11 +249416,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250331,11 +249436,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250353,11 +249456,9 @@ case CPU_KC160:
 warn_if_expr_in_parens();
 add_opcode(0x7F);
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: break;
 default: error_int_range(const_expr); }
@@ -250966,11 +250067,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -250987,11 +250086,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -251152,11 +250249,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -251173,11 +250268,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -251747,11 +250840,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -251768,11 +250859,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -252315,11 +251404,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }
@@ -252336,11 +251423,9 @@ switch (g_cpu) {
 case CPU_R4K: case CPU_R5K: 
 warn_if_expr_in_parens();
 {
-int const_expr = -1;
-xassert(m_const_exprs.size() >= 1);
-const_expr = m_const_exprs.front();
-m_const_exprs.pop_front();
-m_exprs.pop_front();
+xassert(!const_exprs_.empty());
+int const_expr = const_exprs_.front();
+const_exprs_.pop_front();
 switch (const_expr) {
 case 1: case 2: case 4: break;
 default: error_int_range(const_expr); }

@@ -270,11 +270,9 @@ sub parse_code {
 		for my $target (sort {$a<=>$b} keys %target_jumps) {
 			my $id = $target_jumps{$target};
 			push @code, 
-				"string target$id = Section::autolabel();",
-				"ScannedLine line$id;",
-				"TextScanner ts${id}{ target$id, line$id };",
-				"auto target_expr$id = make_shared<Expr>();",
-				"xassert(target_expr$id->parse(line$id));";
+				"string target$id = autolabel();",
+				"Expr* target_expr$id = new Expr(*assembler_, target$id);",
+				"exprs_.push_back(target_expr$id);";
 		}
 		
 		# create each opcode and corresponding label
@@ -289,23 +287,17 @@ sub parse_code {
 			if ($op_type == $JR) {
 				defined(my $id = $target_jumps{$jump_to}) or die;
 				push @code,
-					"m_exprs.push_back(target_expr$id);",
-					"add_jump_relative(0x".fmthex($ops->[0]).");",
-					"m_exprs.pop_back();";
+					"add_opcode_jr(0x".fmthex($ops->[0]).");";
 			}
 			elsif ($op_type == $JP) {
 				defined(my $id = $target_jumps{$jump_to}) or die;
 				push @code,
-					"m_exprs.push_back(target_expr$id);",
-					"add_opcode_nn(0x".fmthex($ops->[0]).");",
-					"m_exprs.pop_back();";
+					"add_opcode_nn(0x".fmthex($ops->[0]).");";
 			}
 			elsif ($op_type == $JP3) {
 				defined(my $id = $target_jumps{$jump_to}) or die;
 				push @code,
-					"m_exprs.push_back(target_expr$id);",
-					"add_opcode_nnn(0x".fmthex($ops->[0]).");",
-					"m_exprs.pop_back();";
+					"add_opcode_nnn(0x".fmthex($ops->[0]).");";
 			}
 			elsif ($op_type == $OP) {
 				push @code, parse_code_opcode($cpu, $asm, @$ops);
@@ -376,7 +368,7 @@ sub parse_code {
 				
 				if ($count_j==1) {
 					push @code,
-						"add_jump_relative(0x".fmthex($opcode).");";
+						"add_opcode_jr(0x".fmthex($opcode).");";
 				}
 				else {	
 					die $count_j;
@@ -437,7 +429,10 @@ sub parse_code_opcode {
 
 	#say "$cpu\t$asm\t@bin";
 	
-	if ($bin =~ s/ \@(\w+)//) {
+	if ($bin =~ s/ \@(\w+) %s//) {
+		push @code, "add_call_function_n(\"$1\");";
+	}
+	elsif ($bin =~ s/ \@(\w+)//) {
 		push @code, "add_call_function(\"$1\");";
 	}
 	elsif ($asm =~ /^rst((\.(s|sil|l|lis))?) %c/) {
@@ -486,20 +481,18 @@ sub parse_code_opcode {
 		push @code, "add_opcode_NN(".build_bytes($bin).");";
 	}
 	elsif ($bin =~ s/ %j$//) {
-		push @code, "add_jump_relative(".build_bytes($bin).");";
+		push @code, "add_opcode_jr(".build_bytes($bin).");";
 	}
 	elsif ($bin =~ s/ %J %J$//) {
-		push @code, "add_jump_relative16(".build_bytes($bin).");";
+		push @code, "add_opcode_jre(".build_bytes($bin).");";
 	}
 	elsif ($bin =~ s/%c\((.*?)\)/const_expr/) {
-		push @code, "{",
-					"int const_expr = -1;";
+		push @code, "{";
 		my @values = eval($1); die "$cpu, $asm, @bin, $1" if $@;
 		$bin =~ s/%c/const_expr/g;		# replace all other %c in bin
-		push @code, "xassert(m_const_exprs.size() >= 1);",
-					"const_expr = m_const_exprs.front();",
-                    "m_const_exprs.pop_front();",
-                    "m_exprs.pop_front();",
+		push @code, "xassert(!const_exprs_.empty());",
+					"int const_expr = const_exprs_.front();",
+                    "const_exprs_.pop_front();",
 					"switch (const_expr) {",
 					join(" ", map {"case $_:"} @values)." break;",
 					"default: error_int_range(const_expr); }";
@@ -519,9 +512,6 @@ sub parse_code_opcode {
 	}
 	elsif ($asm =~ /^rst/) {
 		push @code, "add_restart();";
-	}
-	elsif ($bin =~ s/^%s//) {
-		push @code, "add_opcode_defb();";
 	}
 	else {
 		push @code, "add_opcode(".build_bytes($bin).");";
@@ -612,7 +602,7 @@ sub merge_parens {
 		die;
 	}
 	elsif (!$t->{expr_no_parens} && $t->{expr_in_parens}) {
-		return "if (!expr_in_parens()) { error_expr_not_in_parens(); return; }\n".
+		return "error_if_expr_not_in_parens();\n".
 				parse_code($cpu, @{$t->{expr_in_parens}});			
 	}
 	elsif ($t->{expr_no_parens} && !$t->{expr_in_parens}) {

@@ -1611,7 +1611,7 @@ for my $cpu (@CPUS) {
 		add($cpu, "add sp, %s", [0xE8, '%s']);
 	}
 	else {
-		add($cpu, "add sp, %s", [call(), '@__z80asm__add_sp_s'], ['%s']);
+		add($cpu, "add sp, %s", [call(), '@__z80asm__add_sp_s', '%s']);
 	}
 
 	# ADC
