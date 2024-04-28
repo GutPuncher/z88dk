@@ -4,7 +4,9 @@
 // License: The Artistic License 2.0, http://www.perlfoundation.org/artistic_license_2_0
 //-----------------------------------------------------------------------------
 
+#include "files.h"
 #include "object.h"
+#include "xassert.h"
 using namespace std;
 
 //-----------------------------------------------------------------------------
@@ -66,6 +68,16 @@ Symbol* Instr::label() const {
 
 void Instr::set_label(Symbol* label) {
     label_ = label;
+}
+
+void Instr::add_byte(int byte) {
+    bytes_.push_back(byte);
+}
+
+void Instr::add_patch(Patch* patch) {
+    patches_.push_back(patch);
+    for (int i = 0; i < patch->size(); i++)
+        add_byte(0);
 }
 
 //-----------------------------------------------------------------------------
@@ -149,10 +161,19 @@ void Module::select_section(const string& name) {
         cur_section_ = it->second;
 }
 
+Section* Module::cur_section() const {
+    xassert(cur_section_);
+    return cur_section_;
+}
+
+Symtab* Module::local_symbols() {
+    return &local_symbols_;
+}
+
 //-----------------------------------------------------------------------------
 
-Object::Object(const string& name)
-    : name_(name) {
+Object::Object(const string& filename)
+    : filename_(filename) {
     create_default_module();
 }
 
@@ -171,11 +192,11 @@ void Object::clear_all() {
     modules_.clear();
     module_by_name_.clear();
     cur_module_ = nullptr;
-    select_module(name_);
+    create_default_module();
 }
 
 void Object::create_default_module() {
-    select_module(name_);
+    select_module(file_basename(filename_));
 }
 
 void Object::select_module(const string& name) {
@@ -187,5 +208,10 @@ void Object::select_module(const string& name) {
     }
     else
         cur_module_ = it->second;
+}
+
+Module* Object::cur_module() const {
+    xassert(cur_module_);
+    return cur_module_;
 }
 

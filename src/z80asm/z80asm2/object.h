@@ -38,6 +38,8 @@ public:
     const list<Patch*>& patches() const;
     Symbol* label() const;
     void set_label(Symbol* label);
+    void add_byte(int byte);
+    void add_patch(Patch* patch);
 
 private:
     int offset_{ 0 };                       // offset in bytes from start of section
@@ -83,6 +85,8 @@ public:
     auto begin() { return sections_.begin(); }
     auto end() { return sections_.end(); }
     void select_section(const string& name);
+    Section* cur_section() const;
+    Symtab* local_symbols();
 
 private:
     string name_;                           // name based on filename, or given by directive
@@ -99,7 +103,7 @@ private:
 
 class Object {
 public:
-    Object(const string& name);
+    Object(const string& filename);
     virtual ~Object();
     Object(const Object& other) = delete;
     Object& operator=(const Object& other) = delete;
@@ -108,9 +112,10 @@ public:
     auto begin() { return modules_.begin(); }
     auto end() { return modules_.end(); }
     void select_module(const string& name);
+    Module* cur_module() const;
 
 private:
-    string name_;                           // name based on filename
+    string filename_;                       // name based on filename
     list<Module*> modules_;                 // list of modules in this object
     unordered_map<string, Module*> module_by_name_; // index modules by name
     Module* cur_module_{ nullptr };         // current module

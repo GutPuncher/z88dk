@@ -23,6 +23,18 @@ public:
     Symbol(const string& name, sym_scope_t scope, sym_type_t type, Section* section, int value = 0);
 
     const string& name() const;
+    sym_scope_t scope() const;
+    sym_type_t type() const;
+    Section* section() const;
+    bool is_touched() const;
+    bool is_global_def() const;
+
+    void set_type(sym_type_t type);
+    void set_value(int value);
+    void set_expr(Expr* expr);
+    void set_instr(Instr* instr);
+    void set_touched(bool f = true);
+    void set_global_def(bool f = true);
 
     ExprResult eval();				    // compute value
 

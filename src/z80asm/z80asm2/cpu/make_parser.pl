@@ -585,7 +585,7 @@ sub merge_cpu {
 	}
 	else {
 		# variants per CPU
-		$ret .= "switch (g_args.cpu()) {\n";
+		$ret .= "switch (g_cpu) {\n";
 		for my $code (sort keys %code) {
 			for my $cpu (sort keys %{$code{$code}}) {
 				$ret .= "case CPU_".uc($cpu).": ";

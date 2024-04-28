@@ -4,6 +4,7 @@
 // License: The Artistic License 2.0, http://www.perlfoundation.org/artistic_license_2_0
 //-----------------------------------------------------------------------------
 
+#include "assembler.h"
 #include "common.h"
 #include "expr.h"
 #include "symtab.h"
@@ -67,7 +68,8 @@ void ExprResult::error() {
 
 //-----------------------------------------------------------------------------
 
-Expr::Expr(const string& expr_text) {
+Expr::Expr(Assembler& assembler, const string& expr_text)
+    : assembler_(&assembler) {
     Lexer lexer(expr_text);
     if (!parse_expr(&lexer))
         g_errors.error(ErrSyntaxExpr, expr_text);
@@ -325,6 +327,15 @@ ExprResult Expr::eval() const {
     xassert(stack.size() == 1);
     int x = stack.back();
     return ExprResult(x, ErrOk);
+}
+
+bool Expr::in_parens() const {
+    if (rpn_tokens_.empty())
+        return false;
+    else if (rpn_tokens_.front().code() == TK_LPAREN)
+        return true;
+    else
+        return false;
 }
 
 const Token& Expr::token() {
@@ -617,7 +628,7 @@ void Expr::parse_primary() {
 
         // do not create symbols refered to in IF or while checking if code is expr
         if (parsing_if_) {
-            Symbol* symbol = g_asm.find_symbol(name);
+            Symbol* symbol = assembler_->find_symbol(name);
             if (symbol) {
                 symbol_token = token();
                 symbol_token.set_symbol(symbol);
@@ -631,7 +642,7 @@ void Expr::parse_primary() {
             }
         }
         else {
-            Symbol* symbol = g_asm.use_symbol(name);
+            Symbol* symbol = assembler_->use_symbol(name);
             symbol_token = token();
             symbol_token.set_symbol(symbol);
             rpn_tokens_.push_back(symbol_token);
@@ -640,10 +651,10 @@ void Expr::parse_primary() {
         break;
 
     case TK_ASMPC:
-        xassert(g_asm.asmpc);
+        xassert(assembler_->asmpc());
         symbol_token = token();
-        symbol_token.set_svalue(g_asm.asmpc->name);
-        symbol_token.set_symbol(g_asm.asmpc);
+        symbol_token.set_svalue(assembler_->asmpc()->name());
+        symbol_token.set_symbol(assembler_->asmpc());
         rpn_tokens_.push_back(symbol_token);
         consume_token();
         break;
@@ -668,3 +679,6 @@ Patch::~Patch() {
     delete expr_;
 }
 
+int Patch::size() const {
+    return range_size(range_);
+}

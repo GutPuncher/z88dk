@@ -16,6 +16,12 @@ Parser::Parser(Assembler& assembler)
     : assembler_(&assembler) {
 }
 
+Parser::~Parser() {
+    for (auto& expr : exprs_)
+        delete expr;
+    exprs_.clear();
+}
+
 bool Parser::parse(const string& filename) {
     if (!source_reader_.open(filename))
         return false;
@@ -153,3 +159,63 @@ bool Parser::match_eos() {
     }
 }
 
+bool Parser::parse_expr() {
+    Expr expr(*assembler_);
+    if (expr.parse_expr(&lexer_)) {
+        exprs_.push_back(&expr);
+        return true;
+    }
+    else
+        return false;
+}
+
+void Parser::warn_if_expr_in_parens() {
+    if (!exprs_.empty()) {
+        if (exprs_.back()->in_parens())
+            g_errors.warning(ErrExprInParens);
+    }
+}
+
+Instr* Parser::add_opcode(int opcode) {
+    return assembler_->add_instr(opcode);
+}
+
+Instr* Parser::add_opcode(int opcode, range_t range) {
+    xassert(!exprs_.empty());
+    Instr* instr = assembler_->add_instr(opcode);
+    Patch* patch = new Patch(range, exprs_.back());
+    instr->add_patch(patch);
+    return instr;
+}
+
+Instr* Parser::add_opcode_n(int opcode) {
+    return add_opcode(opcode, RANGE_BYTE_UNSIGNED);
+}
+
+Instr* Parser::add_opcode_nn(int opcode) {
+    return add_opcode(opcode, RANGE_WORD);
+}
+
+Instr* Parser::add_opcode_idx(int opcode) {
+    if ((opcode & 0xffff0000) == 0) {
+        return add_opcode(opcode, RANGE_BYTE_SIGNED);
+    }
+    else if ((opcode & 0xff000000) == 0) {
+        Instr* instr = add_opcode(opcode >> 8, RANGE_BYTE_SIGNED);
+        instr->add_byte(opcode & 0xff);
+        return instr;
+    }
+    else {
+        xassert(0);
+    }
+}
+
+void Parser::error_illegal_ident() {
+    g_errors.error(ErrIllegalIdent);
+}
+
+void Parser::add_call_function(const string& name) {
+    Expr* expr = new Expr(assembler_, name);
+    exprs_.push_back(expr);
+    add_opcode_nn(0xCD);
+}

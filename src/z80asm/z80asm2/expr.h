@@ -12,6 +12,8 @@
 #include "z80asm_defs.h"
 using namespace std;
 
+class Assembler;
+
 //-----------------------------------------------------------------------------
 
 class ExprResult {
@@ -33,7 +35,7 @@ private:
 
 class Expr : public HasLocation {
 public:
-    Expr(const string& expr_text = "0");
+    Expr(Assembler& assembler, const string& expr_text = "0");
 
     const string& text() const;
 
@@ -42,7 +44,10 @@ public:
 
     ExprResult eval() const;            // evaluate expression
 
+    bool in_parens() const;             // true if expression surrounded by ()
+
 private:
+    Assembler* assembler_;              // instance of assembler to lookup and create symbols
     string text_;                       // expression text
     vector<Token> rpn_tokens_;			// rpn of expression tokens
     Lexer* lexer_{ nullptr };           // lexer with expression to be parsed
@@ -75,6 +80,8 @@ public:
     virtual ~Patch();
     Patch(const Patch& other) = delete;
     Patch& operator=(const Patch& other) = delete;
+
+    int size() const;
 
 private:
     range_t range_{ RANGE_UNDEFINED };  // type of patch

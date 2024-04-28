@@ -19,6 +19,50 @@ const string& Symbol::name() const {
     return name_;
 }
 
+sym_scope_t Symbol::scope() const {
+    return scope_;
+}
+
+sym_type_t Symbol::type() const {
+    return type_;
+}
+
+Section* Symbol::section() const {
+    return section_;
+}
+
+bool Symbol::is_touched() const {
+    return is_touched_;
+}
+
+bool Symbol::is_global_def() const {
+    return is_global_def_;
+}
+
+void Symbol::set_type(sym_type_t type) {
+    type_ = type;
+}
+
+void Symbol::set_value(int value) {
+    value_ = value;
+}
+
+void Symbol::set_expr(Expr* expr) {
+    expr_ = expr;
+}
+
+void Symbol::set_instr(Instr* instr) {
+    instr_ = instr;
+}
+
+void Symbol::set_touched(bool f) {
+    is_touched_ = f;
+}
+
+void Symbol::set_global_def(bool f) {
+    is_global_def_ = f;
+}
+
 ExprResult Symbol::eval() {
     if (recurse_count_ != 0)
         return ExprResult(0, ErrExprRecursion);
